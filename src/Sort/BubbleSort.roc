@@ -1,11 +1,11 @@
 BubbleSort :: {}.{
 	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
-		bubble = |arr, idx, swapped| {
+		sort = |arr, idx, swapped| {
 			end = idx == arr.len() - 1
 
 			if end and swapped {
-				return bubble(arr, 0, False)
+				return sort(arr, 0, False)
 			}
 
 			if end and !swapped {
@@ -28,13 +28,13 @@ BubbleSort :: {}.{
 					Ok(swap) => swap
 					_ => crash "unreachable"
 				}
-					|> bubble(next_idx, True)
+					|> sort(next_idx, True)
 			}
 
-			bubble(arr, next_idx, swapped)
+			sort(arr, next_idx, swapped)
 		}
 
-		bubble(array, 0, False)
+		sort(array, 0, False)
 	}
 
 }
