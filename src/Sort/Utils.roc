@@ -44,14 +44,9 @@ Utils :: {}.{
 
 		True
 	}
-
-	# Uncommenting this function fixes the compiler error
-	# bug : (List(U64) -> List(U64)) -> {}
-	# bug = |func| {
-	# 	_ = func(unsorted_5)
-	# }
 }
 
+unsorted_4 : List(U64)
 unsorted_4 = [2, 4, 1, 3]
 
 sorted_4 = [1, 2, 3, 4]
