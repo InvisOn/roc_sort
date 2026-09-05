@@ -1,11 +1,7 @@
-import sort/Bubble_sort
+import Sort/BubbleSort
+import Sort/GnomeSort
 
 main! = |_args| {
-	arr = [5, 2, 4, 1, 3]
-
-	sorted = bubble_sort(arr)
-
-	dbg sorted
-
+	dbg [5, 2, 4, 1, 3] |> GnomeSort.gnome_sort
 	Ok({})
 }

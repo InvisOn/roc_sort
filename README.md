@@ -4,7 +4,7 @@
 |-----:|:-------------------------------------------------------------------------------------------------|:----:|
 |    1 | [Bogosort](https://en.wikipedia.org/wiki/Bogosort)                                               ||
 |    2 | [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)                                         | :heavy_check_mark: |
-|    3 | [Gnome sort](https://en.wikipedia.org/wiki/Gnome_sort)                                           ||
+|    3 | [Gnome sort](https://en.wikipedia.org/wiki/Gnome_sort)                                           | :heavy_check_mark: |
 |    4 | [Odd–even sort](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort)                             ||
 |    5 | [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                   ||
 |    6 | [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                       ||
