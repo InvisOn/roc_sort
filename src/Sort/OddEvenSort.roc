@@ -1,16 +1,16 @@
 import Utils
 
 OddEvenSort :: {}.{
-	odd_even_sort : List(U64) -> List(U64)
-	odd_even_sort = |array| {
+	sort : List(U64) -> List(U64)
+	sort = |array| {
 		len = array.len()
 
-		sort = |arr, done| {
+		aux = |arr, done| {
 			if done {
 				return arr
 			}
 
-			var $sorted = True
+			var $auxed = True
 			var $var_arr = arr
 
 			for i in 0..<len - 1 {
@@ -18,7 +18,7 @@ OddEvenSort :: {}.{
 					j = i + 1
 					if Utils.get($var_arr, i) > Utils.get($var_arr, j) {
 						$var_arr = Utils.swap($var_arr, i, j)
-						$sorted = False
+						$auxed = False
 					}
 				}
 			}
@@ -28,16 +28,16 @@ OddEvenSort :: {}.{
 					j = i + 1
 					if Utils.get($var_arr, i) > Utils.get($var_arr, j) {
 						$var_arr = Utils.swap($var_arr, i, j)
-						$sorted = False
+						$auxed = False
 					}
 				}
 			}
 
-			sort($var_arr, $sorted)
+			aux($var_arr, $auxed)
 		}
 
-		sort(array, False)
+		aux(array, False)
 	}
 }
 
-expect Utils.test(OddEvenSort.odd_even_sort)
+expect Utils.test(OddEvenSort.sort)

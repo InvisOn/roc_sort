@@ -1,13 +1,13 @@
 import Utils
 
 BubbleSort :: {}.{
-	bubble_sort : List(U64) -> List(U64)
-	bubble_sort = |array| {
-		sort = |arr, idx, swapped| {
+	sort : List(U64) -> List(U64)
+	sort = |array| {
+		aux = |arr, idx, swapped| {
 			end = idx == arr.len() - 1
 
 			if end and swapped {
-				return sort(arr, 0, False)
+				return aux(arr, 0, False)
 			}
 
 			if end and !swapped {
@@ -17,15 +17,15 @@ BubbleSort :: {}.{
 			next = idx + 1
 			if Utils.get(arr, idx) > Utils.get(arr, next) {
 				return Utils.swap(arr, idx, next)
-					|> sort(next, True)
+					|> aux(next, True)
 			}
 
-			sort(arr, next, swapped)
+			aux(arr, next, swapped)
 		}
 
-		sort(array, 0, False)
+		aux(array, 0, False)
 	}
 
 }
 
-expect Utils.test(BubbleSort.bubble_sort)
+expect Utils.test(BubbleSort.sort)

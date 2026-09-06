@@ -1,30 +1,30 @@
 import Utils
 
 GnomeSort :: {}.{
-	gnome_sort : List(U64) -> List(U64)
-	gnome_sort = |array| {
+	sort : List(U64) -> List(U64)
+	sort = |array| {
 		len = array.len()
 
-		sort = |arr, idx| {
+		aux = |arr, idx| {
 			if !(idx < len) {
 				return arr
 			}
 
 			next = idx + 1
 			if idx == 0 {
-				return sort(arr, next)
+				return aux(arr, next)
 			}
 
 			prev = idx - 1
 			if Utils.get(arr, idx) >= Utils.get(arr, prev) {
-				return sort(arr, idx + 1)
+				return aux(arr, idx + 1)
 			}
 
-			return Utils.swap(arr, idx, prev) |> sort(prev)
+			return Utils.swap(arr, idx, prev) |> aux(prev)
 		}
 
-		sort(array, 0)
+		aux(array, 0)
 	}
 }
 
-expect Utils.test(GnomeSort.gnome_sort)
+expect Utils.test(GnomeSort.sort)
