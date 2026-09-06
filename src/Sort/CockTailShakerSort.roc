@@ -5,10 +5,10 @@ CockTailShakerSort :: {}.{
 	sort = |var $array| {
 		len = $array.len()
 
-		var $swapped = False
 		while True {
+			var $swapped = False
 
-			for i in 0..<len - 1 {
+			for i in 0..=len - 2 {
 				j = i + 1
 				if Utils.get($array, i) > Utils.get($array, j) {
 					$array = Utils.swap($array, i, j)
@@ -16,11 +16,13 @@ CockTailShakerSort :: {}.{
 				}
 			}
 
-			if !$swapped {
+			if $swapped == False {
 				break
 			}
 
-			for i in len - 2..=0 {
+			$swapped = False
+
+			for i in (0..=len - 2).iter_rev() {
 				j = i + 1
 				if Utils.get($array, i) > Utils.get($array, j) {
 					$array = Utils.swap($array, i, j)
@@ -28,7 +30,7 @@ CockTailShakerSort :: {}.{
 				}
 			}
 
-			if !$swapped {
+			if $swapped == False {
 				break
 			}
 		}
@@ -37,12 +39,4 @@ CockTailShakerSort :: {}.{
 	}
 }
 
-expect {
-	array = [4, 3, 2, 1]
-	result = CockTailShakerSort.sort(array)
-	dbg array
-	dbg result
-	[1, 2, 3, 4] == result
-
-}
-# expect Utils.test(CockTailShakerSort.sort)
+expect Utils.test(CockTailShakerSort.sort)
