@@ -13,6 +13,13 @@ Utils :: {}.{
 		}
 	}
 
+	replace = |array, i, e| {
+		match array.replace(i, e) {
+			Ok(result) => result.list
+			_ => crash "replace unreachable"
+		}
+	}
+
 	test = |func| {
 		if func(sorted_4) != sorted_4 {
 			dbg "Fail 1"
