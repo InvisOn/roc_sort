@@ -1,33 +1,23 @@
-import Utils
-
-# shift : List(U64), U64, Bool -> List(U64)
-# shift = |array, idx, done| {
-# 	array
-# }
+import Utils exposing [replace, get, insert, test]
 
 InsertionSort :: {}.{
 	sort : List(U64) -> List(U64)
-	sort = |var $array| {
-		for i in 1..<$array.len() {
-			key = Utils.get($array, i)
-			var $j = i - 1
-
-			e = Utils.get($array, $j)
-			while $j >= 0 and e > key {
-				$array = Utils.replace($array, $j, e)
-			}
-
+	sort = |array| {
+		match array {
+			[] | [_] => array
+			[head, .. as tail] => return insertion(sort(tail), head)
 		}
-
-		$array
 	}
 }
 
-expect {
-	array = [2, 4, 1, 3]
-	expected = [1, 2, 3, 4]
-	dbg expected == InsertionSort.sort(array)
-	True
-
+insertion = |array, e| {
+	len = array.len()
+	if len == 0 or e <= get(array, 0) {
+		return insert(array, 0, e)
+	} else {
+		first = get(array, 0)
+		return array.sublist({ start: 1, len: len }) |> insertion(e) |> insert(0, first)
+	}
 }
-# expect Utils.test(InsertionSort.sort)
+
+expect test(InsertionSort.sort)

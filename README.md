@@ -8,7 +8,7 @@
 |    4 | [Odd–even sort](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort)                             | :heavy_check_mark: |
 |    5 | [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                   | :heavy_check_mark: |
 |    6 | [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                       | :heavy_check_mark: |
-|    7 | [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)                                   ||
+|    7 | [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)                                   | :heavy_check_mark: |
 |    8 | [Counting sort](https://en.wikipedia.org/wiki/Counting_sort)                                     ||
 |    9 | [Pigeonhole sort](https://en.wikipedia.org/wiki/Pigeonhole_sort)                                 ||
 |   10 | [Comb sort](https://en.wikipedia.org/wiki/Comb_sort)                                             ||

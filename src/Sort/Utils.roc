@@ -6,16 +6,23 @@ Utils :: {}.{
 		}
 	}
 
-	swap = |array, i, j| {
-		match array.swap(i, j) {
+	swap = |array, idx, idx2| {
+		match array.swap(idx, idx2) {
 			Ok(arr) => arr
 			_ => crash "swap unreachable"
 		}
 	}
 
-	replace = |array, i, e| {
-		match array.replace(i, e) {
-			Ok(result) => result.list
+	replace = |array, idx, elem| {
+		match array.replace(idx, elem) {
+			Ok({ list: arr, prev: _ }) => arr
+			_ => crash "replace unreachable"
+		}
+	}
+
+	insert = |array, idx, elem| {
+		match array.insert(idx, elem) {
+			Ok(arr) => arr
 			_ => crash "replace unreachable"
 		}
 	}
