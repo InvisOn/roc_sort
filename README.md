@@ -9,7 +9,7 @@
 |    5 | [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                   | :heavy_check_mark: |
 |    6 | [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                       | :heavy_check_mark: |
 |    7 | [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)                                   | :heavy_check_mark: |
-|    8 | [Counting sort](https://en.wikipedia.org/wiki/Counting_sort)                                     ||
+|    8 | [Counting sort](https://en.wikipedia.org/wiki/Counting_sort)                                     | :heavy_check_mark: |
 |    9 | [Pigeonhole sort](https://en.wikipedia.org/wiki/Pigeonhole_sort)                                 ||
 |   10 | [Comb sort](https://en.wikipedia.org/wiki/Comb_sort)                                             ||
 |   11 | [Cycle sort](https://en.wikipedia.org/wiki/Cycle_sort)                                           ||
