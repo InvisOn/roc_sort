@@ -5,21 +5,21 @@ InsertionSort :: {}.{
 	sort = |array| {
 		match array {
 			[] | [_] => array
-			[head, .. as tail] => return aux(sort(tail), head)
+			[head, .. as tail] => return insert_head(sort(tail), head)
 		}
 	}
 }
 
-aux = |array, e| {
+insert_head = |array, e| {
 	len = array.len()
 	if len == 0 or e <= get(array, 0) {
 		return insert(array, 0, e)
-	} else {
-		first = get(array, 0)
-		return array.sublist({ start: 1, len: len })
-			|> aux(e)
-			|> insert(0, first)
 	}
+
+	first = get(array, 0)
+	return array.sublist({ start: 1, len })
+		|> insert_head(e)
+		|> insert(0, first)
 }
 
 expect test(InsertionSort.sort)
