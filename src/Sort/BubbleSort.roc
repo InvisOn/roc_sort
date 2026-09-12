@@ -1,4 +1,4 @@
-import Utils
+import Utils exposing [swap, get, test]
 
 BubbleSort :: {}.{
 	sort : List(U64) -> List(U64)
@@ -15,8 +15,8 @@ BubbleSort :: {}.{
 			}
 
 			next = idx + 1
-			if Utils.get(arr, idx) > Utils.get(arr, next) {
-				return Utils.swap(arr, idx, next)
+			if get(arr, idx) > get(arr, next) {
+				return swap(arr, idx, next)
 					|> aux(next, True)
 			}
 
@@ -28,4 +28,4 @@ BubbleSort :: {}.{
 
 }
 
-expect Utils.test(BubbleSort.sort)
+expect test(BubbleSort.sort)

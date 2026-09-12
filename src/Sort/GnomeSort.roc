@@ -1,4 +1,4 @@
-import Utils
+import Utils exposing [swap, get, test]
 
 GnomeSort :: {}.{
 	sort : List(U64) -> List(U64)
@@ -16,15 +16,15 @@ GnomeSort :: {}.{
 			}
 
 			prev = idx - 1
-			if Utils.get(arr, idx) >= Utils.get(arr, prev) {
+			if get(arr, idx) >= get(arr, prev) {
 				return aux(arr, idx + 1)
 			}
 
-			return Utils.swap(arr, idx, prev) |> aux(prev)
+			return swap(arr, idx, prev) |> aux(prev)
 		}
 
 		aux(array, 0)
 	}
 }
 
-expect Utils.test(GnomeSort.sort)
+expect test(GnomeSort.sort)

@@ -1,4 +1,4 @@
-import Utils
+import Utils exposing [get, swap, test]
 
 SelectionSort :: {}.{
 	sort : List(U64) -> List(U64)
@@ -13,13 +13,13 @@ SelectionSort :: {}.{
 			next = idx + 1
 			var $minimum = idx
 			for i in next..<len {
-				if Utils.get(arr, i) < Utils.get(arr, $minimum) {
+				if get(arr, i) < get(arr, $minimum) {
 					$minimum = i
 				}
 			}
 
 			if $minimum != idx {
-				return aux(Utils.swap(arr, idx, $minimum), next)
+				return aux(swap(arr, idx, $minimum), next)
 			}
 
 			aux(arr, next)
@@ -29,4 +29,4 @@ SelectionSort :: {}.{
 	}
 }
 
-expect Utils.test(SelectionSort.sort)
+expect test(SelectionSort.sort)

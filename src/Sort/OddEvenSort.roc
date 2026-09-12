@@ -1,4 +1,4 @@
-import Utils
+import Utils exposing [swap, get, test]
 
 OddEvenSort :: {}.{
 	sort : List(U64) -> List(U64)
@@ -16,8 +16,8 @@ OddEvenSort :: {}.{
 			for i in 0..<len - 1 {
 				if i % 2 == 0 {
 					j = i + 1
-					if Utils.get($var_arr, i) > Utils.get($var_arr, j) {
-						$var_arr = Utils.swap($var_arr, i, j)
+					if get($var_arr, i) > get($var_arr, j) {
+						$var_arr = swap($var_arr, i, j)
 						$auxed = False
 					}
 				}
@@ -26,8 +26,8 @@ OddEvenSort :: {}.{
 			for i in 0..<len - 1 {
 				if i % 2 == 1 {
 					j = i + 1
-					if Utils.get($var_arr, i) > Utils.get($var_arr, j) {
-						$var_arr = Utils.swap($var_arr, i, j)
+					if get($var_arr, i) > get($var_arr, j) {
+						$var_arr = swap($var_arr, i, j)
 						$auxed = False
 					}
 				}
@@ -40,4 +40,4 @@ OddEvenSort :: {}.{
 	}
 }
 
-expect Utils.test(OddEvenSort.sort)
+expect test(OddEvenSort.sort)

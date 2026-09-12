@@ -1,4 +1,4 @@
-import Utils
+import Utils exposing [swap, get, test]
 
 CockTailShakerSort :: {}.{
 	sort : List(U64) -> List(U64)
@@ -10,8 +10,8 @@ CockTailShakerSort :: {}.{
 
 			for i in 0..=len - 2 {
 				j = i + 1
-				if Utils.get($array, i) > Utils.get($array, j) {
-					$array = Utils.swap($array, i, j)
+				if get($array, i) > get($array, j) {
+					$array = swap($array, i, j)
 					$swapped = True
 				}
 			}
@@ -24,8 +24,8 @@ CockTailShakerSort :: {}.{
 
 			for i in (0..=len - 2).iter_rev() {
 				j = i + 1
-				if Utils.get($array, i) > Utils.get($array, j) {
-					$array = Utils.swap($array, i, j)
+				if get($array, i) > get($array, j) {
+					$array = swap($array, i, j)
 					$swapped = True
 				}
 			}
@@ -39,4 +39,4 @@ CockTailShakerSort :: {}.{
 	}
 }
 
-expect Utils.test(CockTailShakerSort.sort)
+expect test(CockTailShakerSort.sort)
