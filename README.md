@@ -1,9 +1,9 @@
 # Sorting Algorithms in Roc
 
-| Algorithm                                                                                     | Recursive Version  | Imperative Version |
+| Sorting Algorithm                                                                             | Recursive Version  | Loop Version       |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|
 | [Bogosort](https://en.wikipedia.org/wiki/Bogosort)                                            |                    |                    |
-| [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)                                      | :heavy_check_mark: |                    |
+| [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)                                      | :heavy_check_mark: | :heavy_check_mark: |
 | [Gnome sort](https://en.wikipedia.org/wiki/Gnome_sort)                                        | :heavy_check_mark: | :heavy_check_mark: |
 | [Odd-even sort](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort)                          | :heavy_check_mark: | :heavy_check_mark: |
 | [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                | :heavy_check_mark: | :heavy_check_mark: |
