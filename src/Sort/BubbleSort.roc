@@ -1,10 +1,15 @@
-import Utils exposing [swap, get, test]
+import Utils exposing [swap, get, test1, test2, test3, test4, test5]
 
 BubbleSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |array| {
+	bubble_sort : List(U64) -> List(U64)
+	bubble_sort = |array| {
 		aux = |arr, idx, swapped| {
-			end = idx == arr.len() - 1
+			len = arr.len()
+			if len == 0 {
+				return arr
+			}
+
+			end = idx == len - 1
 
 			if end and swapped {
 				return aux(arr, 0, False)
@@ -28,4 +33,8 @@ BubbleSort :: {}.{
 
 }
 
-expect test(BubbleSort.sort)
+expect test1(BubbleSort.bubble_sort)
+expect test2(BubbleSort.bubble_sort)
+expect test3(BubbleSort.bubble_sort)
+expect test4(BubbleSort.bubble_sort)
+expect test5(BubbleSort.bubble_sort)

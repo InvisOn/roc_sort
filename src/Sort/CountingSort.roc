@@ -1,8 +1,8 @@
-import Utils exposing [swap, get, test, replace]
+import Utils exposing [swap, get, replace, test1, test2, test3, test4, test5]
 
 CountingSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |array| {
+	counting_sort : List(U64) -> List(U64)
+	counting_sort = |array| {
 		len = array.len()
 		if len == 0 {
 			return array
@@ -35,4 +35,8 @@ CountingSort :: {}.{
 
 }
 
-expect test(CountingSort.sort)
+expect test1(CountingSort.counting_sort)
+expect test2(CountingSort.counting_sort)
+expect test3(CountingSort.counting_sort)
+expect test4(CountingSort.counting_sort)
+expect test5(CountingSort.counting_sort)

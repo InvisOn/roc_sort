@@ -1,8 +1,8 @@
-import Utils exposing [get, swap, test]
+import Utils exposing [get, swap, test1, test2, test3, test4, test5]
 
 SelectionSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |array| {
+	selection_sort : List(U64) -> List(U64)
+	selection_sort = |array| {
 		len = array.len()
 
 		aux = |arr, idx| {
@@ -29,4 +29,8 @@ SelectionSort :: {}.{
 	}
 }
 
-expect test(SelectionSort.sort)
+expect test1(SelectionSort.selection_sort)
+expect test2(SelectionSort.selection_sort)
+expect test3(SelectionSort.selection_sort)
+expect test4(SelectionSort.selection_sort)
+expect test5(SelectionSort.selection_sort)

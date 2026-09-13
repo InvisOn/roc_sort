@@ -1,8 +1,8 @@
-import Utils exposing [replace, swap, get, test]
+import Utils exposing [replace, swap, get, test1, test2, test3, test4, test5]
 
 PigeonholeSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |var $array| {
+	pigeonhole_sort : List(U64) -> List(U64)
+	pigeonhole_sort = |var $array| {
 		if $array.len() == 0 {
 			return $array
 		}
@@ -40,4 +40,8 @@ PigeonholeSort :: {}.{
 
 }
 
-expect test(PigeonholeSort.sort)
+expect test1(PigeonholeSort.pigeonhole_sort)
+expect test2(PigeonholeSort.pigeonhole_sort)
+expect test3(PigeonholeSort.pigeonhole_sort)
+expect test4(PigeonholeSort.pigeonhole_sort)
+expect test5(PigeonholeSort.pigeonhole_sort)

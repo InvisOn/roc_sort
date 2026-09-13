@@ -1,11 +1,11 @@
-import Utils exposing [replace, get, insert, test]
+import Utils exposing [replace, get, insert, test1, test2, test3, test4, test5]
 
 InsertionSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |array| {
+	insertion_sort : List(U64) -> List(U64)
+	insertion_sort = |array| {
 		match array {
 			[] | [_] => array
-			[head, .. as tail] => return insert_head(sort(tail), head)
+			[head, .. as tail] => return insert_head(insertion_sort(tail), head)
 		}
 	}
 }
@@ -22,4 +22,8 @@ insert_head = |array, e| {
 		|> insert(0, first)
 }
 
-expect test(InsertionSort.sort)
+expect test1(InsertionSort.insertion_sort)
+expect test2(InsertionSort.insertion_sort)
+expect test3(InsertionSort.insertion_sort)
+expect test4(InsertionSort.insertion_sort)
+expect test5(InsertionSort.insertion_sort)

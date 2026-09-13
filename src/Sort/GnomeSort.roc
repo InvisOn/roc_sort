@@ -1,8 +1,8 @@
-import Utils exposing [swap, get, test]
+import Utils exposing [swap, get, test1, test2, test3, test4, test5]
 
 GnomeSort :: {}.{
-	sort : List(U64) -> List(U64)
-	sort = |array| {
+	gnome_sort : List(U64) -> List(U64)
+	gnome_sort = |array| {
 		len = array.len()
 
 		aux = |arr, idx| {
@@ -27,4 +27,8 @@ GnomeSort :: {}.{
 	}
 }
 
-expect test(GnomeSort.sort)
+expect test1(GnomeSort.gnome_sort)
+expect test2(GnomeSort.gnome_sort)
+expect test3(GnomeSort.gnome_sort)
+expect test4(GnomeSort.gnome_sort)
+expect test5(GnomeSort.gnome_sort)
