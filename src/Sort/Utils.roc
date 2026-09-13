@@ -1,10 +1,7 @@
-expect 3 >= sorted_5.len
-
 Utils :: {}.{
 	get : List(U64), U64 -> U64
 	get = |array, idx| {
 		expect idx >= 0 or idx <= array.len()
-		expect 3 >= sorted_5.len
 		match array.get(idx) {
 			Ok(arr) => arr
 			_ => crash "get unreachable"
