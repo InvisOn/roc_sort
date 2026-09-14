@@ -6,8 +6,8 @@
 | [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)                                      | :heavy_check_mark: | :heavy_check_mark: |
 | [Gnome sort](https://en.wikipedia.org/wiki/Gnome_sort)                                        | :heavy_check_mark: | :heavy_check_mark: |
 | [Odd-even sort](https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort)                          | :heavy_check_mark: | :heavy_check_mark: |
-| [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                | :heavy_check_mark: | :heavy_check_mark: |
-| [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                    |                    | :heavy_check_mark: |
+| [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                | mix                |                    |
+| [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                    | :heavy_check_mark: | :heavy_check_mark: |
 | [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)                                | :heavy_check_mark: |                    |
 | [Counting sort](https://en.wikipedia.org/wiki/Counting_sort)                                  |                    | :heavy_check_mark: |
 | [Pigeonhole sort](https://en.wikipedia.org/wiki/Pigeonhole_sort)                              |                    | :heavy_check_mark: |

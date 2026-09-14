@@ -25,6 +25,24 @@ GnomeSort :: {}.{
 
 		aux(array, 0)
 	}
+
+	gnome_sort2 : List(U64) -> List(U64)
+	gnome_sort2 = |var $array| {
+		len = $array.len()
+
+		var $idx = 1
+		while $idx < len {
+			if $idx == 0 or get($array, $idx) >= get($array, $idx - 1) {
+				$idx = $idx + 1
+			} else {
+				prev = $idx - 1
+				$array = swap($array, $idx, prev)
+				$idx = prev
+			}
+		}
+
+		return $array
+	}
 }
 
 expect test1(GnomeSort.gnome_sort)
@@ -32,3 +50,9 @@ expect test2(GnomeSort.gnome_sort)
 expect test3(GnomeSort.gnome_sort)
 expect test4(GnomeSort.gnome_sort)
 expect test5(GnomeSort.gnome_sort)
+
+expect test1(GnomeSort.gnome_sort2)
+expect test2(GnomeSort.gnome_sort2)
+expect test3(GnomeSort.gnome_sort2)
+expect test4(GnomeSort.gnome_sort2)
+expect test5(GnomeSort.gnome_sort2)
