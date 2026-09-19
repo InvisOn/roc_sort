@@ -1,6 +1,8 @@
-import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [swap, get]
+import Tests
 
 GnomeSort :: {}.{
+	gnome_sort : List(U64) -> List(U64)
 	gnome_sort = |array| {
 		len = array.len()
 
@@ -25,6 +27,7 @@ GnomeSort :: {}.{
 		aux(array, 0)
 	}
 
+	gnome_sort2 : List(U64) -> List(U64)
 	gnome_sort2 = |var $array| {
 		len = $array.len()
 
@@ -43,14 +46,24 @@ GnomeSort :: {}.{
 	}
 }
 
-expect test_already_sorted_even(GnomeSort.gnome_sort)
-expect test_permutation_even(GnomeSort.gnome_sort)
-expect test_already_sorted_odd(GnomeSort.gnome_sort)
-expect test_permutation_odd(GnomeSort.gnome_sort)
-expect test_empty(GnomeSort.gnome_sort)
+expect Tests.test_already_sorted_even(GnomeSort.gnome_sort)
+expect Tests.test_permutation_even(GnomeSort.gnome_sort)
+expect Tests.test_already_sorted_odd(GnomeSort.gnome_sort)
+expect Tests.test_permutation_odd(GnomeSort.gnome_sort)
+expect Tests.test_empty(GnomeSort.gnome_sort)
+expect Tests.test_singleton(GnomeSort.gnome_sort)
+expect Tests.test_duplicates(GnomeSort.gnome_sort)
+expect Tests.test_spare(GnomeSort.gnome_sort)
+expect Tests.test_reversed(GnomeSort.gnome_sort)
+expect Tests.test_all_equal(GnomeSort.gnome_sort)
 
-expect test_already_sorted_even(GnomeSort.gnome_sort2)
-expect test_permutation_even(GnomeSort.gnome_sort2)
-expect test_already_sorted_odd(GnomeSort.gnome_sort2)
-expect test_permutation_odd(GnomeSort.gnome_sort2)
-expect test_empty(GnomeSort.gnome_sort2)
+expect Tests.test_already_sorted_even(GnomeSort.gnome_sort2)
+expect Tests.test_permutation_even(GnomeSort.gnome_sort2)
+expect Tests.test_already_sorted_odd(GnomeSort.gnome_sort2)
+expect Tests.test_permutation_odd(GnomeSort.gnome_sort2)
+expect Tests.test_empty(GnomeSort.gnome_sort2)
+expect Tests.test_singleton(GnomeSort.gnome_sort2)
+expect Tests.test_duplicates(GnomeSort.gnome_sort2)
+expect Tests.test_spare(GnomeSort.gnome_sort2)
+expect Tests.test_reversed(GnomeSort.gnome_sort2)
+expect Tests.test_all_equal(GnomeSort.gnome_sort2)

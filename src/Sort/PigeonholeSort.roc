@@ -1,6 +1,8 @@
-import Utils exposing [replace, min, max, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [replace, min, max, get]
+import Tests
 
 PigeonholeSort :: {}.{
+	pigeonhole_sort : List(U64) -> List(U64)
 	pigeonhole_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -15,6 +17,7 @@ PigeonholeSort :: {}.{
 			|> aux(array, 0, range, minimum, 0)
 	}
 
+	pigeonhole_sort2 : List(U64) -> List(U64)
 	pigeonhole_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -75,14 +78,24 @@ sort = |tmp, var $array, minimum, i, idx| {
 		|> sort($array, minimum, i, idx + 1)
 }
 
-expect test_already_sorted_even(PigeonholeSort.pigeonhole_sort)
-expect test_permutation_even(PigeonholeSort.pigeonhole_sort)
-expect test_already_sorted_odd(PigeonholeSort.pigeonhole_sort)
-expect test_permutation_odd(PigeonholeSort.pigeonhole_sort)
-expect test_empty(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_already_sorted_even(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_permutation_even(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_already_sorted_odd(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_permutation_odd(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_empty(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_singleton(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_duplicates(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_spare(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_reversed(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_all_equal(PigeonholeSort.pigeonhole_sort)
 
-expect test_already_sorted_even(PigeonholeSort.pigeonhole_sort2)
-expect test_permutation_even(PigeonholeSort.pigeonhole_sort2)
-expect test_already_sorted_odd(PigeonholeSort.pigeonhole_sort2)
-expect test_permutation_odd(PigeonholeSort.pigeonhole_sort2)
-expect test_empty(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_already_sorted_even(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_permutation_even(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_already_sorted_odd(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_permutation_odd(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_empty(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_singleton(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_duplicates(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_spare(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_reversed(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_all_equal(PigeonholeSort.pigeonhole_sort2)

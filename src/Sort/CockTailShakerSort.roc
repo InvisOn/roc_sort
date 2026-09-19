@@ -1,9 +1,11 @@
-import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [swap, get]
+import Tests
 
 CockTailShakerSort :: {}.{
+	cocktail_shaker_sort : List(U64) -> List(U64)
 	cocktail_shaker_sort = |array| {
 		len = array.len()
-		if len == 0 {
+		if len == 0 or len == 1 {
 			return array
 		}
 
@@ -42,9 +44,10 @@ CockTailShakerSort :: {}.{
 		sort(array, False)
 	}
 
+	cocktail_shaker_sort2 : List(U64) -> List(U64)
 	cocktail_shaker_sort2 = |var $array| {
 		len = $array.len()
-		if len == 0 {
+		if len == 0 or len == 1 {
 			return $array
 		}
 
@@ -82,14 +85,24 @@ CockTailShakerSort :: {}.{
 	}
 }
 
-expect test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort)
-expect test_permutation_even(CockTailShakerSort.cocktail_shaker_sort)
-expect test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort)
-expect test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort)
-expect test_empty(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_permutation_even(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_empty(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_singleton(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_duplicates(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_spare(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_reversed(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_all_equal(CockTailShakerSort.cocktail_shaker_sort)
 
-expect test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort2)
-expect test_permutation_even(CockTailShakerSort.cocktail_shaker_sort2)
-expect test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort2)
-expect test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort2)
-expect test_empty(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_permutation_even(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_empty(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_singleton(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_duplicates(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_spare(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_reversed(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_all_equal(CockTailShakerSort.cocktail_shaker_sort2)

@@ -1,6 +1,8 @@
-import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [swap, get]
+import Tests
 
 OddEvenSort :: {}.{
+	odd_even_sort : List(U64) -> List(U64)
 	odd_even_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -37,6 +39,7 @@ OddEvenSort :: {}.{
 		sort(array, False)
 	}
 
+	odd_even_sort2 : List(U64) -> List(U64)
 	odd_even_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -72,14 +75,24 @@ OddEvenSort :: {}.{
 	}
 }
 
-expect test_already_sorted_even(OddEvenSort.odd_even_sort)
-expect test_permutation_even(OddEvenSort.odd_even_sort)
-expect test_already_sorted_odd(OddEvenSort.odd_even_sort)
-expect test_permutation_odd(OddEvenSort.odd_even_sort)
-expect test_empty(OddEvenSort.odd_even_sort)
+expect Tests.test_already_sorted_even(OddEvenSort.odd_even_sort)
+expect Tests.test_permutation_even(OddEvenSort.odd_even_sort)
+expect Tests.test_already_sorted_odd(OddEvenSort.odd_even_sort)
+expect Tests.test_permutation_odd(OddEvenSort.odd_even_sort)
+expect Tests.test_empty(OddEvenSort.odd_even_sort)
+expect Tests.test_singleton(OddEvenSort.odd_even_sort)
+expect Tests.test_duplicates(OddEvenSort.odd_even_sort)
+expect Tests.test_spare(OddEvenSort.odd_even_sort)
+expect Tests.test_reversed(OddEvenSort.odd_even_sort)
+expect Tests.test_all_equal(OddEvenSort.odd_even_sort)
 
-expect test_already_sorted_even(OddEvenSort.odd_even_sort2)
-expect test_permutation_even(OddEvenSort.odd_even_sort2)
-expect test_already_sorted_odd(OddEvenSort.odd_even_sort2)
-expect test_permutation_odd(OddEvenSort.odd_even_sort2)
-expect test_empty(OddEvenSort.odd_even_sort2)
+expect Tests.test_already_sorted_even(OddEvenSort.odd_even_sort2)
+expect Tests.test_permutation_even(OddEvenSort.odd_even_sort2)
+expect Tests.test_already_sorted_odd(OddEvenSort.odd_even_sort2)
+expect Tests.test_permutation_odd(OddEvenSort.odd_even_sort2)
+expect Tests.test_empty(OddEvenSort.odd_even_sort2)
+expect Tests.test_singleton(OddEvenSort.odd_even_sort2)
+expect Tests.test_duplicates(OddEvenSort.odd_even_sort2)
+expect Tests.test_spare(OddEvenSort.odd_even_sort2)
+expect Tests.test_reversed(OddEvenSort.odd_even_sort2)
+expect Tests.test_all_equal(OddEvenSort.odd_even_sort2)

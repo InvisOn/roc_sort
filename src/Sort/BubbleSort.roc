@@ -1,7 +1,8 @@
-import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [swap, get]
 import Tests
 
 BubbleSort :: {}.{
+	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
 		aux = |arr, idx, swapped| {
 			len = arr.len()
@@ -31,6 +32,7 @@ BubbleSort :: {}.{
 		aux(array, 0, False)
 	}
 
+	bubble_sort2 : List(U64) -> List(U64)
 	bubble_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -65,9 +67,19 @@ expect Tests.test_permutation_even(BubbleSort.bubble_sort)
 expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort)
 expect Tests.test_permutation_odd(BubbleSort.bubble_sort)
 expect Tests.test_empty(BubbleSort.bubble_sort)
+expect Tests.test_singleton(BubbleSort.bubble_sort)
+expect Tests.test_duplicates(BubbleSort.bubble_sort)
+expect Tests.test_spare(BubbleSort.bubble_sort)
+expect Tests.test_reversed(BubbleSort.bubble_sort)
+expect Tests.test_all_equal(BubbleSort.bubble_sort)
 
 expect Tests.test_already_sorted_even(BubbleSort.bubble_sort2)
 expect Tests.test_permutation_even(BubbleSort.bubble_sort2)
 expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort2)
 expect Tests.test_permutation_odd(BubbleSort.bubble_sort2)
 expect Tests.test_empty(BubbleSort.bubble_sort2)
+expect Tests.test_singleton(BubbleSort.bubble_sort2)
+expect Tests.test_duplicates(BubbleSort.bubble_sort2)
+expect Tests.test_spare(BubbleSort.bubble_sort2)
+expect Tests.test_reversed(BubbleSort.bubble_sort2)
+expect Tests.test_all_equal(BubbleSort.bubble_sort2)

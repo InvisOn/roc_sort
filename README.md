@@ -10,7 +10,7 @@
 | [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                    | :heavy_check_mark: | :heavy_check_mark: |                   |
 | [Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)                                | :heavy_check_mark: | :heavy_check_mark: |                   |
 | [Counting sort](https://en.wikipedia.org/wiki/Counting_sort)                                  | :heavy_check_mark: | :heavy_check_mark: |                   |
-| [Pigeonhole sort](https://en.wikipedia.org/wiki/Pigeonhole_sort)                              |                    | :heavy_check_mark: |                   |
+| [Pigeonhole sort](https://en.wikipedia.org/wiki/Pigeonhole_sort)                              | :heavy_check_mark: | :heavy_check_mark: |                   |
 | [Comb sort](https://en.wikipedia.org/wiki/Comb_sort)                                          |                    | :heavy_check_mark: |                   |
 | [Cycle sort](https://en.wikipedia.org/wiki/Cycle_sort)                                        |                    |                    |                   |
 | [Stooge sort](https://en.wikipedia.org/wiki/Stooge_sort)                                      |                    |                    |                   |

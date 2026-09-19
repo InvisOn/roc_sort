@@ -1,6 +1,8 @@
-import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Utils exposing [swap, get]
+import Tests
 
 CombSort :: {}.{
+	comb_sort : List(U64) -> List(U64)
 	comb_sort = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -39,8 +41,14 @@ CombSort :: {}.{
 
 }
 
-expect test_already_sorted_even(CombSort.comb_sort)
-expect test_permutation_even(CombSort.comb_sort)
-expect test_already_sorted_odd(CombSort.comb_sort)
-expect test_permutation_odd(CombSort.comb_sort)
-expect test_empty(CombSort.comb_sort)
+expect Tests.test_already_sorted_even(CombSort.comb_sort)
+expect Tests.test_permutation_even(CombSort.comb_sort)
+expect Tests.test_already_sorted_odd(CombSort.comb_sort)
+expect Tests.test_permutation_odd(CombSort.comb_sort)
+expect Tests.test_empty(CombSort.comb_sort)
+expect Tests.test_empty(CombSort.comb_sort)
+expect Tests.test_singleton(CombSort.comb_sort)
+expect Tests.test_duplicates(CombSort.comb_sort)
+expect Tests.test_spare(CombSort.comb_sort)
+expect Tests.test_reversed(CombSort.comb_sort)
+expect Tests.test_all_equal(CombSort.comb_sort)
