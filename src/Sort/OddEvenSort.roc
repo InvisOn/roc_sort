@@ -1,7 +1,6 @@
-import Utils exposing [swap, get, test1, test2, test3, test4, test5]
+import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 OddEvenSort :: {}.{
-	odd_even_sort : List(U64) -> List(U64)
 	odd_even_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -38,7 +37,6 @@ OddEvenSort :: {}.{
 		sort(array, False)
 	}
 
-	odd_even_sort2 : List(U64) -> List(U64)
 	odd_even_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -74,14 +72,14 @@ OddEvenSort :: {}.{
 	}
 }
 
-expect test1(OddEvenSort.odd_even_sort)
-expect test2(OddEvenSort.odd_even_sort)
-expect test3(OddEvenSort.odd_even_sort)
-expect test4(OddEvenSort.odd_even_sort)
-expect test5(OddEvenSort.odd_even_sort)
+expect test_already_sorted_even(OddEvenSort.odd_even_sort)
+expect test_permutation_even(OddEvenSort.odd_even_sort)
+expect test_already_sorted_odd(OddEvenSort.odd_even_sort)
+expect test_permutation_odd(OddEvenSort.odd_even_sort)
+expect test_empty(OddEvenSort.odd_even_sort)
 
-expect test1(OddEvenSort.odd_even_sort2)
-expect test2(OddEvenSort.odd_even_sort2)
-expect test3(OddEvenSort.odd_even_sort2)
-expect test4(OddEvenSort.odd_even_sort2)
-expect test5(OddEvenSort.odd_even_sort2)
+expect test_already_sorted_even(OddEvenSort.odd_even_sort2)
+expect test_permutation_even(OddEvenSort.odd_even_sort2)
+expect test_already_sorted_odd(OddEvenSort.odd_even_sort2)
+expect test_permutation_odd(OddEvenSort.odd_even_sort2)
+expect test_empty(OddEvenSort.odd_even_sort2)

@@ -1,7 +1,6 @@
-import Utils exposing [replace, get, insert, test1, test2, test3, test4, test5]
+import Utils exposing [replace, get, insert, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 InsertionSort :: {}.{
-	insertion_sort : List(U64) -> List(U64)
 	insertion_sort = |array| {
 		match array {
 			[] | [_] => array
@@ -9,7 +8,6 @@ InsertionSort :: {}.{
 		}
 	}
 
-	insertion_sort2 : List(U64) -> List(U64)
 	insertion_sort2 = |var $array| {
 		var $idx = 1
 		while $idx < $array.len() {
@@ -39,14 +37,14 @@ insert_head = |array, e| {
 		|> insert(0, first)
 }
 
-expect test1(InsertionSort.insertion_sort)
-expect test2(InsertionSort.insertion_sort)
-expect test3(InsertionSort.insertion_sort)
-expect test4(InsertionSort.insertion_sort)
-expect test5(InsertionSort.insertion_sort)
+expect test_already_sorted_even(InsertionSort.insertion_sort)
+expect test_permutation_even(InsertionSort.insertion_sort)
+expect test_already_sorted_odd(InsertionSort.insertion_sort)
+expect test_permutation_odd(InsertionSort.insertion_sort)
+expect test_empty(InsertionSort.insertion_sort)
 
-expect test1(InsertionSort.insertion_sort2)
-expect test2(InsertionSort.insertion_sort2)
-expect test3(InsertionSort.insertion_sort2)
-expect test4(InsertionSort.insertion_sort2)
-expect test5(InsertionSort.insertion_sort2)
+expect test_already_sorted_even(InsertionSort.insertion_sort2)
+expect test_permutation_even(InsertionSort.insertion_sort2)
+expect test_already_sorted_odd(InsertionSort.insertion_sort2)
+expect test_permutation_odd(InsertionSort.insertion_sort2)
+expect test_empty(InsertionSort.insertion_sort2)

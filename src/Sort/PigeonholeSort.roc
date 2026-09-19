@@ -1,26 +1,32 @@
-import Utils exposing [replace, swap, get, test1, test2, test3, test4, test5]
+import Utils exposing [replace, min, max, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 PigeonholeSort :: {}.{
-	pigeonhole_sort : List(U64) -> List(U64)
-	pigeonhole_sort = |var $array| {
-		if $array.len() == 0 {
+	pigeonhole_sort = |array| {
+		len = array.len()
+		if len == 0 {
+			return array
+		}
+
+		minimum = min(array)
+		range = max(array) - minimum + 1
+		tmp = List.repeat(0, range)
+
+		return fill_temp(tmp, array, len, minimum, 0)
+			|> aux(array, 0, range, minimum, 0)
+	}
+
+	pigeonhole_sort2 = |var $array| {
+		len = $array.len()
+		if len == 0 {
 			return $array
 		}
 
-		min = match $array.min() {
-			Ok(m) => m
-			Err(_) => crash "unreachable"
-		}
-		max = match $array.max() {
-			Ok(m) => m
-			Err(_) => crash "unreachable"
-		}
-
-		range = max - min + 1
+		minimum = min($array)
+		range = max($array) - minimum + 1
 		var $tmp = List.repeat(0, range)
 
-		for i in 0..<range {
-			j = get($array, i) - min
+		for i in 0..<len {
+			j = get($array, i) - minimum
 			k = get($tmp, j) + 1
 			$tmp = replace($tmp, j, k)
 		}
@@ -30,18 +36,53 @@ PigeonholeSort :: {}.{
 			while get($tmp, i) > 0 {
 				j = get($tmp, i) - 1
 				$tmp = replace($tmp, i, j)
-				$array = replace($array, $idx, i + min)
+				$array = replace($array, $idx, i + minimum)
 				$idx = $idx + 1
 			}
 		}
 
 		$array
 	}
-
 }
 
-expect test1(PigeonholeSort.pigeonhole_sort)
-expect test2(PigeonholeSort.pigeonhole_sort)
-expect test3(PigeonholeSort.pigeonhole_sort)
-expect test4(PigeonholeSort.pigeonhole_sort)
-expect test5(PigeonholeSort.pigeonhole_sort)
+fill_temp = |tmp, array, len, minimum, idx| {
+	if idx == len {
+		return tmp
+	}
+
+	j = get(array, idx) - minimum
+	k = get(tmp, j) + 1
+	return replace(tmp, j, k) |> fill_temp(array, len, minimum, idx + 1)
+}
+
+aux = |tmp, array, idx, range, minimum, i| {
+	if i == range {
+		return array
+	}
+	return sort(tmp, array, minimum, i, idx)
+		|> (|(arr, t, j)| aux(t, arr, j, range, minimum, i + 1))
+}
+
+sort = |tmp, var $array, minimum, i, idx| {
+	elem = get(tmp, i)
+	if !(elem > 0) {
+		return ($array, tmp, idx)
+	}
+	j = elem - 1
+	$array = replace($array, idx, i + minimum)
+
+	return replace(tmp, i, j)
+		|> sort($array, minimum, i, idx + 1)
+}
+
+expect test_already_sorted_even(PigeonholeSort.pigeonhole_sort)
+expect test_permutation_even(PigeonholeSort.pigeonhole_sort)
+expect test_already_sorted_odd(PigeonholeSort.pigeonhole_sort)
+expect test_permutation_odd(PigeonholeSort.pigeonhole_sort)
+expect test_empty(PigeonholeSort.pigeonhole_sort)
+
+expect test_already_sorted_even(PigeonholeSort.pigeonhole_sort2)
+expect test_permutation_even(PigeonholeSort.pigeonhole_sort2)
+expect test_already_sorted_odd(PigeonholeSort.pigeonhole_sort2)
+expect test_permutation_odd(PigeonholeSort.pigeonhole_sort2)
+expect test_empty(PigeonholeSort.pigeonhole_sort2)

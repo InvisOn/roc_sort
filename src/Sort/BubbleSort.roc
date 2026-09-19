@@ -1,7 +1,7 @@
-import Utils exposing [swap, get, test1, test2, test3, test4, test5]
+import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
+import Tests
 
 BubbleSort :: {}.{
-	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
 		aux = |arr, idx, swapped| {
 			len = arr.len()
@@ -31,7 +31,6 @@ BubbleSort :: {}.{
 		aux(array, 0, False)
 	}
 
-	bubble_sort2 : List(U64) -> List(U64)
 	bubble_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -61,14 +60,14 @@ BubbleSort :: {}.{
 	}
 }
 
-expect test1(BubbleSort.bubble_sort)
-expect test2(BubbleSort.bubble_sort)
-expect test3(BubbleSort.bubble_sort)
-expect test4(BubbleSort.bubble_sort)
-expect test5(BubbleSort.bubble_sort)
+expect Tests.test_already_sorted_even(BubbleSort.bubble_sort)
+expect Tests.test_permutation_even(BubbleSort.bubble_sort)
+expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort)
+expect Tests.test_permutation_odd(BubbleSort.bubble_sort)
+expect Tests.test_empty(BubbleSort.bubble_sort)
 
-expect test1(BubbleSort.bubble_sort2)
-expect test2(BubbleSort.bubble_sort2)
-expect test3(BubbleSort.bubble_sort2)
-expect test4(BubbleSort.bubble_sort2)
-expect test5(BubbleSort.bubble_sort2)
+expect Tests.test_already_sorted_even(BubbleSort.bubble_sort2)
+expect Tests.test_permutation_even(BubbleSort.bubble_sort2)
+expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort2)
+expect Tests.test_permutation_odd(BubbleSort.bubble_sort2)
+expect Tests.test_empty(BubbleSort.bubble_sort2)

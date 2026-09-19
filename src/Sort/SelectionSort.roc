@@ -1,7 +1,6 @@
-import Utils exposing [get, swap, test1, test2, test3, test4, test5]
+import Utils exposing [get, swap, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 SelectionSort :: {}.{
-	selection_sort : List(U64) -> List(U64)
 	selection_sort = |array| {
 		len = array.len()
 
@@ -35,7 +34,6 @@ SelectionSort :: {}.{
 		aux(array, 0)
 	}
 
-	selection_sort2 : List(U64) -> List(U64)
 	selection_sort2 = |var $array| {
 		len = $array.len()
 
@@ -62,14 +60,14 @@ SelectionSort :: {}.{
 
 }
 
-expect test1(SelectionSort.selection_sort)
-expect test2(SelectionSort.selection_sort)
-expect test3(SelectionSort.selection_sort)
-expect test4(SelectionSort.selection_sort)
-expect test5(SelectionSort.selection_sort)
+expect test_already_sorted_even(SelectionSort.selection_sort)
+expect test_permutation_even(SelectionSort.selection_sort)
+expect test_already_sorted_odd(SelectionSort.selection_sort)
+expect test_permutation_odd(SelectionSort.selection_sort)
+expect test_empty(SelectionSort.selection_sort)
 
-expect test1(SelectionSort.selection_sort2)
-expect test2(SelectionSort.selection_sort2)
-expect test3(SelectionSort.selection_sort2)
-expect test4(SelectionSort.selection_sort2)
-expect test5(SelectionSort.selection_sort2)
+expect test_already_sorted_even(SelectionSort.selection_sort2)
+expect test_permutation_even(SelectionSort.selection_sort2)
+expect test_already_sorted_odd(SelectionSort.selection_sort2)
+expect test_permutation_odd(SelectionSort.selection_sort2)
+expect test_empty(SelectionSort.selection_sort2)

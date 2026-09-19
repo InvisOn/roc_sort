@@ -1,7 +1,6 @@
-import Utils exposing [swap, get, replace, test1, test2, test3, test4, test5]
+import Utils exposing [swap, get, replace, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 CountingSort :: {}.{
-	counting_sort : List(U64) -> List(U64)
 	counting_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -27,7 +26,6 @@ CountingSort :: {}.{
 		$output
 	}
 
-	counting_sort2 : List(U64) -> List(U64)
 	counting_sort2 = |array| {
 		len = array.len()
 		if len == 0 {
@@ -98,14 +96,14 @@ sort = |acc, var $count, array| {
 	}
 }
 
-# expect test1(CountingSort.counting_sort)
-expect test2(CountingSort.counting_sort)
-# expect test3(CountingSort.counting_sort)
-# expect test4(CountingSort.counting_sort)
-# expect test5(CountingSort.counting_sort)
+# expect test_already_sorted_even(CountingSort.counting_sort)
+expect test_permutation_even(CountingSort.counting_sort)
+# expect test_already_sorted_odd(CountingSort.counting_sort)
+# expect test_permutation_odd(CountingSort.counting_sort)
+# expect test_empty(CountingSort.counting_sort)
 
-expect test1(CountingSort.counting_sort2)
-expect test2(CountingSort.counting_sort2)
-expect test3(CountingSort.counting_sort2)
-expect test4(CountingSort.counting_sort2)
-expect test5(CountingSort.counting_sort2)
+expect test_already_sorted_even(CountingSort.counting_sort2)
+expect test_permutation_even(CountingSort.counting_sort2)
+expect test_already_sorted_odd(CountingSort.counting_sort2)
+expect test_permutation_odd(CountingSort.counting_sort2)
+expect test_empty(CountingSort.counting_sort2)

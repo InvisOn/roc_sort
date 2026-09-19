@@ -1,7 +1,6 @@
-import Utils exposing [swap, get, test1, test2, test3, test4, test5]
+import Utils exposing [swap, get, test_already_sorted_even, test_permutation_even, test_already_sorted_odd, test_permutation_odd, test_empty]
 
 CockTailShakerSort :: {}.{
-	cocktail_shaker_sort : List(U64) -> List(U64)
 	cocktail_shaker_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -43,7 +42,6 @@ CockTailShakerSort :: {}.{
 		sort(array, False)
 	}
 
-	cocktail_shaker_sort2 : List(U64) -> List(U64)
 	cocktail_shaker_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
@@ -84,14 +82,14 @@ CockTailShakerSort :: {}.{
 	}
 }
 
-expect test1(CockTailShakerSort.cocktail_shaker_sort)
-expect test2(CockTailShakerSort.cocktail_shaker_sort)
-expect test3(CockTailShakerSort.cocktail_shaker_sort)
-expect test4(CockTailShakerSort.cocktail_shaker_sort)
-expect test5(CockTailShakerSort.cocktail_shaker_sort)
+expect test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort)
+expect test_permutation_even(CockTailShakerSort.cocktail_shaker_sort)
+expect test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort)
+expect test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort)
+expect test_empty(CockTailShakerSort.cocktail_shaker_sort)
 
-expect test1(CockTailShakerSort.cocktail_shaker_sort2)
-expect test2(CockTailShakerSort.cocktail_shaker_sort2)
-expect test3(CockTailShakerSort.cocktail_shaker_sort2)
-expect test4(CockTailShakerSort.cocktail_shaker_sort2)
-expect test5(CockTailShakerSort.cocktail_shaker_sort2)
+expect test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort2)
+expect test_permutation_even(CockTailShakerSort.cocktail_shaker_sort2)
+expect test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort2)
+expect test_permutation_odd(CockTailShakerSort.cocktail_shaker_sort2)
+expect test_empty(CockTailShakerSort.cocktail_shaker_sort2)
