@@ -9,14 +9,13 @@ CockTailShakerSort :: {}.{
 			return array
 		}
 
-		alternate_sweeps = |var $arr, var $swapped| {
-			forwards_stop = len - 1
-			($arr, $swapped) = sweep($arr, 0, |i| i == forwards_stop, |i| i + 1)
+		alternate_sweeps = |var $arr| {
+			forward_stop = len - 1
+			($arr, var $swapped) = sweep($arr, 0, |i| i == forward_stop, |i| i + 1)
 
 			if !$swapped {
 				return $arr
 			}
-			$swapped = False
 
 			($arr, $swapped) = sweep($arr, len - 2, |i| i == 0, |i| i - 1)
 
@@ -24,10 +23,10 @@ CockTailShakerSort :: {}.{
 				return $arr
 			}
 
-			return alternate_sweeps($arr, $swapped)
+			return alternate_sweeps($arr)
 		}
 
-		alternate_sweeps(array, False)
+		alternate_sweeps(array)
 	}
 
 	cocktail_shaker_sort2 : List(U64) -> List(U64)
@@ -40,7 +39,7 @@ CockTailShakerSort :: {}.{
 		while True {
 			var $swapped = False
 
-			for i in 0..=len - 2 {
+			for i in 0..<len - 1 {
 				j = i + 1
 				if get($array, i) > get($array, j) {
 					$array = swap($array, i, j)
