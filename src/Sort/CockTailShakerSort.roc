@@ -9,39 +9,25 @@ CockTailShakerSort :: {}.{
 			return array
 		}
 
-		shake = |var $arr, i, var $swapped, condition, step| {
-			if condition(i) {
-				return ($arr, $swapped)
-			}
-
-			j = i + 1
-			if get($arr, i) > get($arr, j) {
-				$arr = swap($arr, i, j)
-				$swapped = True
-			}
-
-			return shake($arr, step(i), $swapped, condition, step)
-		}
-
-		sort = |var $arr, var $swapped| {
-			end = len - 2
-			($arr, $swapped) = shake($arr, 0, $swapped, |i| i == end, |i| i + 1)
+		alternate_sweeps = |var $arr, var $swapped| {
+			forwards_stop = len - 1
+			($arr, $swapped) = sweep($arr, 0, |i| i == forwards_stop, |i| i + 1)
 
 			if !$swapped {
 				return $arr
 			}
 			$swapped = False
 
-			($arr, $swapped) = shake($arr, end, $swapped, |i| i == 0, |i| i - 1)
+			($arr, $swapped) = sweep($arr, len - 2, |i| i == 0, |i| i - 1)
 
 			if !$swapped {
 				return $arr
 			}
 
-			return sort($arr, $swapped)
+			return alternate_sweeps($arr, $swapped)
 		}
 
-		sort(array, False)
+		alternate_sweeps(array, False)
 	}
 
 	cocktail_shaker_sort2 : List(U64) -> List(U64)
@@ -62,7 +48,7 @@ CockTailShakerSort :: {}.{
 				}
 			}
 
-			if $swapped == False {
+			if !$swapped {
 				break
 			}
 
@@ -76,7 +62,7 @@ CockTailShakerSort :: {}.{
 				}
 			}
 
-			if $swapped == False {
+			if !$swapped {
 				break
 			}
 		}
@@ -85,6 +71,23 @@ CockTailShakerSort :: {}.{
 	}
 }
 
+sweep = |array, i, stop_at, step| {
+	if stop_at(i) {
+		return (array, False)
+	}
+
+	(rest, swapped) = sweep(array, step(i), stop_at, step)
+
+	j = i + 1
+	if get(array, i) > get(array, j) {
+		(swap(array, i, j), True)
+	} else {
+		(rest, swapped)
+	}
+}
+
+expect Tests.test_duo(CockTailShakerSort.cocktail_shaker_sort)
+expect Tests.test_trio(CockTailShakerSort.cocktail_shaker_sort)
 expect Tests.test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort)
 expect Tests.test_permutation_even(CockTailShakerSort.cocktail_shaker_sort)
 expect Tests.test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort)
@@ -96,6 +99,8 @@ expect Tests.test_spare(CockTailShakerSort.cocktail_shaker_sort)
 expect Tests.test_reversed(CockTailShakerSort.cocktail_shaker_sort)
 expect Tests.test_all_equal(CockTailShakerSort.cocktail_shaker_sort)
 
+expect Tests.test_duo(CockTailShakerSort.cocktail_shaker_sort2)
+expect Tests.test_trio(CockTailShakerSort.cocktail_shaker_sort2)
 expect Tests.test_already_sorted_even(CockTailShakerSort.cocktail_shaker_sort2)
 expect Tests.test_permutation_even(CockTailShakerSort.cocktail_shaker_sort2)
 expect Tests.test_already_sorted_odd(CockTailShakerSort.cocktail_shaker_sort2)

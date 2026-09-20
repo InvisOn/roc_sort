@@ -4,7 +4,7 @@ import Tests
 BubbleSort :: {}.{
 	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
-		len = arr.len()
+		len = array.len()
 		bubble = |arr, idx, swapped| {
 			if len == 0 {
 				return arr

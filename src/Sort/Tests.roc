@@ -23,6 +23,14 @@ Tests :: {}.{
 		test("test_singleton", [42], [42], func)
 	}
 
+	test_duo = |func| {
+		test("test_duo", [1, 2], [2, 1], func)
+	}
+
+	test_trio = |func| {
+		test("test_trio", [1, 2, 3], [1, 3, 2], func)
+	}
+
 	test_duplicates = |func| {
 		test("test_duplicates", [1, 1, 2, 2, 3], [2, 1, 3, 1, 2], func)
 	}
@@ -32,7 +40,7 @@ Tests :: {}.{
 	}
 
 	test_reversed = |func| {
-		test("test_singleton", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func)
+		test("test_reversed", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func)
 	}
 
 	test_all_equal = |func| {
