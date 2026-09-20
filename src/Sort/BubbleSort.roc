@@ -62,6 +62,8 @@ BubbleSort :: {}.{
 	}
 }
 
+expect Tests.test_duo(BubbleSort.bubble_sort)
+expect Tests.test_trio(BubbleSort.bubble_sort)
 expect Tests.test_already_sorted_even(BubbleSort.bubble_sort)
 expect Tests.test_permutation_even(BubbleSort.bubble_sort)
 expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort)
@@ -73,6 +75,8 @@ expect Tests.test_spare(BubbleSort.bubble_sort)
 expect Tests.test_reversed(BubbleSort.bubble_sort)
 expect Tests.test_all_equal(BubbleSort.bubble_sort)
 
+expect Tests.test_duo(BubbleSort.bubble_sort2)
+expect Tests.test_trio(BubbleSort.bubble_sort2)
 expect Tests.test_already_sorted_even(BubbleSort.bubble_sort2)
 expect Tests.test_permutation_even(BubbleSort.bubble_sort2)
 expect Tests.test_already_sorted_odd(BubbleSort.bubble_sort2)

@@ -63,6 +63,8 @@ SelectionSort :: {}.{
 
 }
 
+expect Tests.test_duo(SelectionSort.selection_sort)
+expect Tests.test_trio(SelectionSort.selection_sort)
 expect Tests.test_already_sorted_even(SelectionSort.selection_sort)
 expect Tests.test_permutation_even(SelectionSort.selection_sort)
 expect Tests.test_already_sorted_odd(SelectionSort.selection_sort)
@@ -74,6 +76,8 @@ expect Tests.test_spare(SelectionSort.selection_sort)
 expect Tests.test_reversed(SelectionSort.selection_sort)
 expect Tests.test_all_equal(SelectionSort.selection_sort)
 
+expect Tests.test_duo(SelectionSort.selection_sort2)
+expect Tests.test_trio(SelectionSort.selection_sort2)
 expect Tests.test_already_sorted_even(SelectionSort.selection_sort2)
 expect Tests.test_permutation_even(SelectionSort.selection_sort2)
 expect Tests.test_already_sorted_odd(SelectionSort.selection_sort2)

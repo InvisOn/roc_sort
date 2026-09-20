@@ -40,6 +40,8 @@ insert_head = |array, e| {
 		|> insert(0, get(array, 0))
 }
 
+expect Tests.test_duo(InsertionSort.insertion_sort)
+expect Tests.test_trio(InsertionSort.insertion_sort)
 expect Tests.test_already_sorted_even(InsertionSort.insertion_sort)
 expect Tests.test_permutation_even(InsertionSort.insertion_sort)
 expect Tests.test_already_sorted_odd(InsertionSort.insertion_sort)
@@ -51,6 +53,8 @@ expect Tests.test_spare(InsertionSort.insertion_sort)
 expect Tests.test_reversed(InsertionSort.insertion_sort)
 expect Tests.test_all_equal(InsertionSort.insertion_sort)
 
+expect Tests.test_duo(InsertionSort.insertion_sort2)
+expect Tests.test_trio(InsertionSort.insertion_sort2)
 expect Tests.test_already_sorted_even(InsertionSort.insertion_sort2)
 expect Tests.test_permutation_even(InsertionSort.insertion_sort2)
 expect Tests.test_already_sorted_odd(InsertionSort.insertion_sort2)

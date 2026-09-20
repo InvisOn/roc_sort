@@ -99,6 +99,8 @@ sort = |acc, var $count, array| {
 	}
 }
 
+expect Tests.test_duo(CountingSort.counting_sort)
+expect Tests.test_trio(CountingSort.counting_sort)
 expect Tests.test_already_sorted_even(CountingSort.counting_sort)
 expect Tests.test_permutation_even(CountingSort.counting_sort)
 expect Tests.test_already_sorted_odd(CountingSort.counting_sort)
@@ -110,6 +112,8 @@ expect Tests.test_spare(CountingSort.counting_sort)
 expect Tests.test_reversed(CountingSort.counting_sort)
 expect Tests.test_all_equal(CountingSort.counting_sort)
 
+expect Tests.test_duo(CountingSort.counting_sort2)
+expect Tests.test_trio(CountingSort.counting_sort2)
 expect Tests.test_already_sorted_even(CountingSort.counting_sort2)
 expect Tests.test_permutation_even(CountingSort.counting_sort2)
 expect Tests.test_already_sorted_odd(CountingSort.counting_sort2)

@@ -75,6 +75,8 @@ OddEvenSort :: {}.{
 	}
 }
 
+expect Tests.test_duo(OddEvenSort.odd_even_sort)
+expect Tests.test_trio(OddEvenSort.odd_even_sort)
 expect Tests.test_already_sorted_even(OddEvenSort.odd_even_sort)
 expect Tests.test_permutation_even(OddEvenSort.odd_even_sort)
 expect Tests.test_already_sorted_odd(OddEvenSort.odd_even_sort)
@@ -86,6 +88,8 @@ expect Tests.test_spare(OddEvenSort.odd_even_sort)
 expect Tests.test_reversed(OddEvenSort.odd_even_sort)
 expect Tests.test_all_equal(OddEvenSort.odd_even_sort)
 
+expect Tests.test_duo(OddEvenSort.odd_even_sort2)
+expect Tests.test_trio(OddEvenSort.odd_even_sort2)
 expect Tests.test_already_sorted_even(OddEvenSort.odd_even_sort2)
 expect Tests.test_permutation_even(OddEvenSort.odd_even_sort2)
 expect Tests.test_already_sorted_odd(OddEvenSort.odd_even_sort2)

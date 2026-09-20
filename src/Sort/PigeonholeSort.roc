@@ -78,6 +78,8 @@ sort = |tmp, var $array, minimum, i, idx| {
 		|> sort($array, minimum, i, idx + 1)
 }
 
+expect Tests.test_duo(PigeonholeSort.pigeonhole_sort)
+expect Tests.test_trio(PigeonholeSort.pigeonhole_sort)
 expect Tests.test_already_sorted_even(PigeonholeSort.pigeonhole_sort)
 expect Tests.test_permutation_even(PigeonholeSort.pigeonhole_sort)
 expect Tests.test_already_sorted_odd(PigeonholeSort.pigeonhole_sort)
@@ -89,6 +91,8 @@ expect Tests.test_spare(PigeonholeSort.pigeonhole_sort)
 expect Tests.test_reversed(PigeonholeSort.pigeonhole_sort)
 expect Tests.test_all_equal(PigeonholeSort.pigeonhole_sort)
 
+expect Tests.test_duo(PigeonholeSort.pigeonhole_sort2)
+expect Tests.test_trio(PigeonholeSort.pigeonhole_sort2)
 expect Tests.test_already_sorted_even(PigeonholeSort.pigeonhole_sort2)
 expect Tests.test_permutation_even(PigeonholeSort.pigeonhole_sort2)
 expect Tests.test_already_sorted_odd(PigeonholeSort.pigeonhole_sort2)

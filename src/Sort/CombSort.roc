@@ -82,6 +82,8 @@ compare_and_swap = |array, i, gap, sorted| {
 	}
 }
 
+expect Tests.test_duo(CombSort.comb_sort)
+expect Tests.test_trio(CombSort.comb_sort)
 expect Tests.test_already_sorted_even(CombSort.comb_sort)
 expect Tests.test_permutation_even(CombSort.comb_sort)
 expect Tests.test_already_sorted_odd(CombSort.comb_sort)
@@ -94,6 +96,8 @@ expect Tests.test_spare(CombSort.comb_sort)
 expect Tests.test_reversed(CombSort.comb_sort)
 expect Tests.test_all_equal(CombSort.comb_sort)
 
+expect Tests.test_duo(CombSort.comb_sort2)
+expect Tests.test_trio(CombSort.comb_sort2)
 expect Tests.test_already_sorted_even(CombSort.comb_sort2)
 expect Tests.test_permutation_even(CombSort.comb_sort2)
 expect Tests.test_already_sorted_odd(CombSort.comb_sort2)

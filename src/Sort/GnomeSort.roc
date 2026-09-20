@@ -46,6 +46,8 @@ GnomeSort :: {}.{
 	}
 }
 
+expect Tests.test_duo(GnomeSort.gnome_sort)
+expect Tests.test_trio(GnomeSort.gnome_sort)
 expect Tests.test_already_sorted_even(GnomeSort.gnome_sort)
 expect Tests.test_permutation_even(GnomeSort.gnome_sort)
 expect Tests.test_already_sorted_odd(GnomeSort.gnome_sort)
@@ -57,6 +59,8 @@ expect Tests.test_spare(GnomeSort.gnome_sort)
 expect Tests.test_reversed(GnomeSort.gnome_sort)
 expect Tests.test_all_equal(GnomeSort.gnome_sort)
 
+expect Tests.test_duo(GnomeSort.gnome_sort2)
+expect Tests.test_trio(GnomeSort.gnome_sort2)
 expect Tests.test_already_sorted_even(GnomeSort.gnome_sort2)
 expect Tests.test_permutation_even(GnomeSort.gnome_sort2)
 expect Tests.test_already_sorted_odd(GnomeSort.gnome_sort2)
