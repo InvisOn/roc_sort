@@ -9,7 +9,7 @@ CombSort :: {}.{
 			return $array
 		}
 
-		return sort($array, len, False, len)
+		return comb_sort_pass($array, len, False, len)
 	}
 
 	comb_sort2 : List(U64) -> List(U64)
@@ -33,10 +33,8 @@ CombSort :: {}.{
 
 			var $i = 0
 			while $i + $gap < len {
-				j = $i + $gap
-
 				if get($array, $i) > get($array, $i + $gap) {
-					$array = swap($array, $i, j)
+					$array = swap($array, $i, $i + $gap)
 					$sorted = False
 				}
 
@@ -48,7 +46,7 @@ CombSort :: {}.{
 	}
 }
 
-sort = |var $array, var $gap, var $sorted, len| {
+comb_sort_pass = |var $array, var $gap, var $sorted, len| {
 	if $sorted {
 		return $array
 	}
@@ -62,23 +60,26 @@ sort = |var $array, var $gap, var $sorted, len| {
 		$gap = 11
 	}
 
-	($array, $gap, _, _, $sorted) = aux($array, $gap, 0, len, $sorted)
+	($array, $gap, _, _, $sorted) = scan_gap($array, $gap, 0, len, $sorted)
 
-	return sort($array, $gap, $sorted, len)
+	return comb_sort_pass($array, $gap, $sorted, len)
 }
 
-aux = |var $array, gap, i, len, var $sorted| {
+scan_gap = |array, gap, i, len, sorted| {
 	if !(i + gap < len) {
-		return ($array, gap, i, len, $sorted)
-	}
-	j = i + gap
-
-	if get($array, i) > get($array, i + gap) {
-		$array = swap($array, i, j)
-		$sorted = False
+		return (array, gap, i, len, sorted)
 	}
 
-	return aux($array, gap, i + 1, len, $sorted)
+	return compare_and_swap(array, i, gap, sorted)
+		|> (|(arr, srtd)| scan_gap(arr, gap, i + 1, len, srtd))
+}
+
+compare_and_swap = |array, i, gap, sorted| {
+	if get(array, i) > get(array, i + gap) {
+		(swap(array, i, i + gap), False)
+	} else {
+		(array, sorted)
+	}
 }
 
 expect Tests.test_already_sorted_even(CombSort.comb_sort)

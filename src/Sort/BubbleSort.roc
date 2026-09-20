@@ -4,7 +4,7 @@ import Tests
 BubbleSort :: {}.{
 	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
-		aux = |arr, idx, swapped| {
+		bubble = |arr, idx, swapped| {
 			len = arr.len()
 			if len == 0 {
 				return arr
@@ -13,7 +13,7 @@ BubbleSort :: {}.{
 			end = idx == len - 1
 
 			if end and swapped {
-				return aux(arr, 0, False)
+				return bubble(arr, 0, False)
 			}
 
 			if end and !swapped {
@@ -23,13 +23,13 @@ BubbleSort :: {}.{
 			next = idx + 1
 			if get(arr, idx) > get(arr, next) {
 				return swap(arr, idx, next)
-					|> aux(next, True)
+					|> bubble(next, True)
 			}
 
-			aux(arr, next, swapped)
+			bubble(arr, next, swapped)
 		}
 
-		aux(array, 0, False)
+		bubble(array, 0, False)
 	}
 
 	bubble_sort2 : List(U64) -> List(U64)
