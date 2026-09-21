@@ -2,7 +2,6 @@ import Utils exposing [get, swap]
 import Tests
 
 SelectionSort :: {}.{
-	selection_sort : List(U64) -> List(U64)
 	selection_sort = |array| {
 		len = array.len()
 
@@ -18,25 +17,18 @@ SelectionSort :: {}.{
 			return find_min(arr, idx + 1, min)
 		}
 
-		aux = |arr, idx| {
+		sweep = |arr, idx| {
 			if idx == len {
 				return arr
 			}
 
-			next = idx + 1
-			minimum = find_min(arr, next, idx)
-
-			if minimum != idx {
-				return aux(swap(arr, idx, minimum), next)
-			}
-
-			aux(arr, next)
+			min = find_min(arr, idx + 1, idx)
+			sweep(swap(arr, idx, min), idx + 1)
 		}
 
-		aux(array, 0)
+		sweep(array, 0)
 	}
 
-	selection_sort2 : List(U64) -> List(U64)
 	selection_sort2 = |var $array| {
 		len = $array.len()
 
