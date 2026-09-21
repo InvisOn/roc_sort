@@ -85,20 +85,6 @@ count2 = |acc, max, idx| {
 		|> count2(max, idx + 1)
 }
 
-sort = |acc, var $count, array| {
-	match array {
-		[] => acc
-		[head, .. as tail] => {
-			$count = (get($count, head) - 1)
-				|> (|j| replace($count, head, j))
-
-			get($count, head)
-				|> (|j| replace(acc, j, head))
-				|> sort($count, tail)
-		}
-	}
-}
-
 expect Tests.test_duo(CountingSort.counting_sort)
 expect Tests.test_trio(CountingSort.counting_sort)
 expect Tests.test_already_sorted_even(CountingSort.counting_sort)

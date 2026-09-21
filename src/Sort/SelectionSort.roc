@@ -41,10 +41,6 @@ SelectionSort :: {}.{
 		len = $array.len()
 
 		for idx in 0..<len {
-			if idx == len {
-				return $array
-			}
-
 			next = idx + 1
 			var $minimum = idx
 			for i in next..<len {

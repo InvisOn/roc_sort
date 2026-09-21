@@ -1,10 +1,7 @@
 Utils :: {}.{
 	get = |array, idx| {
 		expect idx < array.len()
-		match array.get(idx) {
-			Ok(arr) => arr
-			_ => crash "get unreachable"
-		}
+		ok(|| array.get(idx), "get")
 	}
 
 	swap = |array, idx, idx2| {
@@ -12,41 +9,33 @@ Utils :: {}.{
 			len = array.len()
 			idx < len and idx2 < len
 		}
-		match array.swap(idx, idx2) {
-			Ok(arr) => arr
-			_ => crash "swap unreachable"
-		}
+		ok(|| array.swap(idx, idx2), "swap")
 	}
 
 	replace = |array, idx, elem| {
 		expect idx < array.len()
-		match array.replace(idx, elem) {
-			Ok({ list: arr, prev: _ }) => arr
-			_ => crash "replace unreachable"
-		}
+		ok(|| array.replace(idx, elem), "replace").list
 	}
 
 	insert = |array, idx, elem| {
 		expect idx <= array.len()
-		match array.insert(idx, elem) {
-			Ok(arr) => arr
-			_ => crash "insert unreachable"
-		}
+		ok(|| array.insert(idx, elem), "insert")
 	}
 
 	min = |array| {
 		expect array.len() > 0
-		match array.min() {
-			Ok(m) => m
-			Err(_) => crash "unreachable"
-		}
+		ok(|| array.min(), "min")
 	}
 
 	max = |array| {
 		expect array.len() > 0
-		match array.max() {
-			Ok(m) => m
-			Err(_) => crash "unreachable"
-		}
+		ok(|| array.max(), "max")
+	}
+}
+
+ok = |func, name| {
+	match func() {
+		Ok(v) => v
+		Err(_) => crash "${name} unreachable"
 	}
 }
