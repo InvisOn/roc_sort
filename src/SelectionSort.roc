@@ -2,6 +2,7 @@ import Utils exposing [get, swap]
 import Tests
 
 SelectionSort :: {}.{
+	selection_sort : List(U64) -> List(U64)
 	selection_sort = |array| {
 		len = array.len()
 
@@ -35,6 +36,7 @@ SelectionSort :: {}.{
 		aux(array, 0)
 	}
 
+	selection_sort2 : List(U64) -> List(U64)
 	selection_sort2 = |var $array| {
 		len = $array.len()
 

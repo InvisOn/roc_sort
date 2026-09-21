@@ -2,6 +2,7 @@ import Utils exposing [replace, get, insert]
 import Tests
 
 InsertionSort :: {}.{
+	insertion_sort : List(U64) -> List(U64)
 	insertion_sort = |array| {
 		match array {
 			[] | [_] => array
@@ -10,6 +11,7 @@ InsertionSort :: {}.{
 		}
 	}
 
+	insertion_sort2 : List(U64) -> List(U64)
 	insertion_sort2 = |var $array| {
 		var $idx = 1
 		while $idx < $array.len() {

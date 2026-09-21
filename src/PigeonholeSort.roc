@@ -2,6 +2,7 @@ import Utils exposing [replace, min, max, get]
 import Tests
 
 PigeonholeSort :: {}.{
+	pigeonhole_sort : List(U64) -> List(U64)
 	pigeonhole_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -16,6 +17,7 @@ PigeonholeSort :: {}.{
 			|> aux(array, 0, range, minimum, 0)
 	}
 
+	pigeonhole_sort2 : List(U64) -> List(U64)
 	pigeonhole_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {

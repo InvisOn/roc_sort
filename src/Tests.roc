@@ -59,10 +59,14 @@ test = |name, expected, data, func| {
 	passed
 }
 
+unsorted_even : List(U64)
 unsorted_even = [2, 4, 1, 3]
 
+sorted_even : List(U64)
 sorted_even = [1, 2, 3, 4]
 
+unsorted_odd : List(U64)
 unsorted_odd = [5, 2, 4, 1, 3]
 
+sorted_odd : List(U64)
 sorted_odd = [1, 2, 3, 4, 5]
