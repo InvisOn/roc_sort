@@ -2,7 +2,6 @@ import Utils exposing [get, replace]
 import Tests
 
 CountingSort :: {}.{
-	counting_sort : List(U64) -> List(U64)
 	counting_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -28,7 +27,6 @@ CountingSort :: {}.{
 		$output
 	}
 
-	counting_sort2 : List(U64) -> List(U64)
 	counting_sort2 = |array| {
 		len = array.len()
 		if len == 0 {

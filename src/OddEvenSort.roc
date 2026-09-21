@@ -2,7 +2,6 @@ import Utils exposing [swap, get]
 import Tests
 
 OddEvenSort :: {}.{
-	odd_even_sort : List(U64) -> List(U64)
 	odd_even_sort = |array| {
 		len = array.len()
 		if len == 0 {
@@ -39,7 +38,6 @@ OddEvenSort :: {}.{
 		sort(array, False)
 	}
 
-	odd_even_sort2 : List(U64) -> List(U64)
 	odd_even_sort2 = |var $array| {
 		len = $array.len()
 		if len == 0 {
