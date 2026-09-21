@@ -1,0 +1,13 @@
+package
+	[
+		BubbleSort,
+		GnomeSort,
+		OddEvenSort,
+		SelectionSort,
+		CockTailShakerSort,
+		InsertionSort,
+		CountingSort,
+		PigeonholeSort,
+		CombSort,
+	]
+	{}

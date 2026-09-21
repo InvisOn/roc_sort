@@ -1,5 +1,7 @@
 # Sorting Algorithms in Roc
 
+A simple package with various sorting algorithms implemented in Roc.
+
 | Sorting Algorithm                                                                             | Recursive Version  | Loop Version       | Optimized Version |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|:-----------------:|
 | [Bogosort](https://en.wikipedia.org/wiki/Bogosort)                                            |                    |                    |                   |
