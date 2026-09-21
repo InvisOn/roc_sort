@@ -27,7 +27,7 @@ CombSort :: {}.{
 			if $gap <= 1 {
 				$gap = 1
 				$sorted = True
-			} else if $gap == 0 or $gap == 10 {
+			} else if $gap == 9 or $gap == 10 {
 				$gap = 11
 			}
 
@@ -56,7 +56,7 @@ comb_sort_pass = |var $array, var $gap, var $sorted, len| {
 	if $gap <= 1 {
 		$gap = 1
 		$sorted = True
-	} else if $gap == 0 or $gap == 10 {
+	} else if $gap == 9 or $gap == 10 {
 		$gap = 11
 	}
 
@@ -89,7 +89,6 @@ expect Tests.test_permutation_even(CombSort.comb_sort)
 expect Tests.test_already_sorted_odd(CombSort.comb_sort)
 expect Tests.test_permutation_odd(CombSort.comb_sort)
 expect Tests.test_empty(CombSort.comb_sort)
-expect Tests.test_empty(CombSort.comb_sort)
 expect Tests.test_singleton(CombSort.comb_sort)
 expect Tests.test_duplicates(CombSort.comb_sort)
 expect Tests.test_spare(CombSort.comb_sort)
@@ -102,7 +101,6 @@ expect Tests.test_already_sorted_even(CombSort.comb_sort2)
 expect Tests.test_permutation_even(CombSort.comb_sort2)
 expect Tests.test_already_sorted_odd(CombSort.comb_sort2)
 expect Tests.test_permutation_odd(CombSort.comb_sort2)
-expect Tests.test_empty(CombSort.comb_sort2)
 expect Tests.test_empty(CombSort.comb_sort2)
 expect Tests.test_singleton(CombSort.comb_sort2)
 expect Tests.test_duplicates(CombSort.comb_sort2)
