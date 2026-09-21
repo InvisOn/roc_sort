@@ -10,14 +10,14 @@ CockTailShakerSort :: {}.{
 		}
 
 		alternate_sweeps = |var $arr| {
-			forward_stop = len - 1
-			($arr, var $swapped) = sweep($arr, 0, |i| i == forward_stop, |i| i + 1)
+			forward_stop = len - 2
+			($arr, var $swapped) = sweep($arr, False, 0, |i| i == forward_stop, |i| i + 1)
 
 			if !$swapped {
 				return $arr
 			}
 
-			($arr, $swapped) = sweep($arr, len - 2, |i| i == 0, |i| i - 1)
+			($arr, $swapped) = sweep($arr, False, len - 2, |i| i == 0, |i| i - 1)
 
 			if !$swapped {
 				return $arr
@@ -70,19 +70,18 @@ CockTailShakerSort :: {}.{
 	}
 }
 
-sweep = |array, i, stop_at, step| {
-	if stop_at(i) {
-		return (array, False)
-	}
-
-	(rest, swapped) = sweep(array, step(i), stop_at, step)
-
+sweep = |var $array, var $swapped, i, stop_at, step| {
 	j = i + 1
-	if get(array, i) > get(array, j) {
-		(swap(array, i, j), True)
-	} else {
-		(rest, swapped)
+	if get($array, i) > get($array, j) {
+		$array = swap($array, i, j)
+		$swapped = True
 	}
+
+	if stop_at(i) {
+		return ($array, $swapped)
+	}
+
+	return sweep($array, $swapped, step(i), stop_at, step)
 }
 
 expect Tests.test_duo(CockTailShakerSort.cocktail_shaker_sort)
