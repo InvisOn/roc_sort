@@ -1,2 +1,2 @@
 test:
-	roc test ./src/package.roc
+	roc test ./src/main.roc
