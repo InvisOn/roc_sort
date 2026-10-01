@@ -1,52 +1,23 @@
 Tests :: {}.{
-	test_already_sorted_even = |func| {
-		test("test_already_sorted_even", sorted_even, sorted_even, func)
-	}
-
-	test_permutation_even = |func| {
-		test("test_permutation_even", sorted_even, unsorted_even, func)
-	}
-
-	test_already_sorted_odd = |func| {
-		test("test_already_sorted_odd", sorted_odd, sorted_odd, func)
-	}
-
-	test_permutation_odd = |func| {
-		test("test_permutation_odd", sorted_odd, unsorted_odd, func)
-	}
-
-	test_empty = |func| {
-		test("test_empty", [], [], func)
-	}
-
-	test_singleton = |func| {
-		test("test_singleton", [42], [42], func)
-	}
-
-	test_duo = |func| {
-		test("test_duo", [1, 2], [2, 1], func)
-	}
-
-	test_trio = |func| {
-		test("test_trio", [1, 2, 3], [1, 3, 2], func)
-	}
-
-	test_duplicates = |func| {
-		test("test_duplicates", [1, 1, 2, 2, 3], [2, 1, 3, 1, 2], func)
-	}
-
-	test_spare = |func| {
-		test("test_spare", [0, 7, 100], [100, 0, 7], func)
-	}
-
-	test_reversed = |func| {
-		test("test_reversed", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func)
-	}
-
-	test_all_equal = |func| {
-		test("test_all_equal", [3, 3, 3], [3, 3, 3], func)
+	run = |func| {
+		tests.map(|test| test(func)).all(|passed| passed)
 	}
 }
+
+tests = [
+	|func| test("test_already_sorted_even", sorted_even, sorted_even, func),
+	|func| test("test_permutation_even", sorted_even, unsorted_even, func),
+	|func| test("test_already_sorted_odd", sorted_odd, sorted_odd, func),
+	|func| test("test_permutation_odd", sorted_odd, unsorted_odd, func),
+	|func| test("test_empty", [], [], func),
+	|func| test("test_singleton", [42], [42], func),
+	|func| test("test_duo", [1, 2], [2, 1], func),
+	|func| test("test_trio", [1, 2, 3], [1, 3, 2], func),
+	|func| test("test_duplicates", [1, 1, 2, 2, 3], [2, 1, 3, 1, 2], func),
+	|func| test("test_spare", [0, 7, 100], [100, 0, 7], func),
+	|func| test("test_reversed", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func),
+	|func| test("test_all_equal", [3, 3, 3], [3, 3, 3], func),
+]
 
 test = |name, expected, data, func| {
 	result = func(data)
