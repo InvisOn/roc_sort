@@ -33,7 +33,7 @@ test = |name, expected, data, func| {
 	passed
 }
 
-long_list = random_list(2, 100, 10)
+long_list = random_list(0, 12, 12)
 
 unsorted_even : List(U64)
 unsorted_even = [2, 4, 1, 3]
