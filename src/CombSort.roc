@@ -1,4 +1,4 @@
-import Utils exposing [swap, get]
+import Utils exposing [get, swap]
 import Tests
 
 CombSort :: {}.{
@@ -70,8 +70,11 @@ scan_gap = |array, gap, i, len, sorted| {
 		return (array, gap, i, len, sorted)
 	}
 
-	return compare_and_swap(array, i, gap, sorted)
-		|> (|(arr, srtd)| scan_gap(arr, gap, i + 1, len, srtd))
+	(arr, srtd) = compare_and_swap(array, i, gap, sorted)
+	return scan_gap(arr, gap, i + 1, len, srtd)
+	# BUG: Lambdas that capture a variable are not tail call optimized
+	# return compare_and_swap(array, i, gap, sorted)
+	# 	|> (|(arr, srtd)| scan_gap(arr, gap, i + 1, len, srtd))
 }
 
 compare_and_swap = |array, i, gap, sorted| {
