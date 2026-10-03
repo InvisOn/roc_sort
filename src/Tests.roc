@@ -1,3 +1,5 @@
+import Utils exposing [random_list]
+
 Tests :: {}.{
 	run = |func| {
 		tests.map(|test| test(func)).all(|passed| passed)
@@ -17,6 +19,7 @@ tests = [
 	|func| test("test_spare", [0, 7, 100], [100, 0, 7], func),
 	|func| test("test_reversed", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func),
 	|func| test("test_all_equal", [3, 3, 3], [3, 3, 3], func),
+	|func| test("test_long_list", long_list.sort(), long_list, func),
 ]
 
 test = |name, expected, data, func| {
@@ -29,6 +32,8 @@ test = |name, expected, data, func| {
 	}
 	passed
 }
+
+long_list = random_list(2, 100, 10)
 
 unsorted_even : List(U64)
 unsorted_even = [2, 4, 1, 3]
