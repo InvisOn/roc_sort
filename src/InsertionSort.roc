@@ -25,21 +25,21 @@ InsertionSort :: {}.{
 	}
 }
 
-sort_from = |arr, sorted_len, len| {
+sort_from = |array, sorted_len, len| {
 	if sorted_len < len {
-		x = get(arr, sorted_len)
-		(ar, j) = shift_larger_right(arr, x, sorted_len)
-		return sort_from(replace(ar, j, x), sorted_len + 1, len)
+		x = get(array, sorted_len)
+		(arr, j) = shift_larger_right(array, x, sorted_len)
+		sort_from(replace(arr, j, x), sorted_len + 1, len)
 	} else {
-		return arr
+		array
 	}
 }
 
 shift_larger_right = |array, x, j| {
 	if j > 0 and get(array, j - 1) > x {
-		return shift_larger_right(replace(array, j, get(array, j - 1)), x, j - 1)
+		shift_larger_right(replace(array, j, get(array, j - 1)), x, j - 1)
 	} else {
-		return (array, j)
+		(array, j)
 	}
 }
 

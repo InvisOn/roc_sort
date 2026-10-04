@@ -23,7 +23,7 @@ CockTailShakerSort :: {}.{
 				return $arr
 			}
 
-			return alternate_sweeps($arr)
+			alternate_sweeps($arr)
 		}
 
 		alternate_sweeps(array)
@@ -81,7 +81,7 @@ sweep = |var $array, var $swapped, i, stop_at, step| {
 		return ($array, $swapped)
 	}
 
-	return sweep($array, $swapped, step(i), stop_at, step)
+	sweep($array, $swapped, step(i), stop_at, step)
 }
 
 expect Tests.run(CockTailShakerSort.cocktail_shaker_sort)

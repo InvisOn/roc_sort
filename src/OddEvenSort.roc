@@ -22,7 +22,7 @@ OddEvenSort :: {}.{
 				}
 			}
 
-			return odd_even($array, i + 1, $done, remainder)
+			odd_even($array, i + 1, $done, remainder)
 		}
 
 		sort = |var $array, var $done| {

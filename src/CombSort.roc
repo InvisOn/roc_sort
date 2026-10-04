@@ -18,6 +18,7 @@ CombSort :: {}.{
 		if len < 2 {
 			return $array
 		}
+
 		var $gap = len
 		var $sorted = False
 
@@ -65,10 +66,8 @@ comb_sort_pass = |array, gap, is_sorted, len| {
 
 scan_gap = |array, is_sorted, i, len, gap| {
 	if !(i + gap < len) {
-		return (array, is_sorted)
-	}
-
-	if get(array, i) > get(array, i + gap) {
+		(array, is_sorted)
+	} else if get(array, i) > get(array, i + gap) {
 		swap(array, i, i + gap)
 			|> scan_gap(False, i + 1, len, gap)
 	} else {

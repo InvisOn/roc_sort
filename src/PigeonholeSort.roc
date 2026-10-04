@@ -11,10 +11,9 @@ PigeonholeSort :: {}.{
 
 		minimum = min(array)
 		range = max(array) - minimum + 1
-		tmp = List.repeat(0, range)
 
-		return fill_temp(tmp, array, len, minimum, 0)
-			|> aux(array, 0, range, minimum, 0)
+		fill_temp(List.repeat(0, range), array, len, minimum, 0)
+			|> sweep(array, 0, range, minimum, 0)
 	}
 
 	pigeonhole_sort2 : List(U64) -> List(U64)
@@ -50,20 +49,21 @@ PigeonholeSort :: {}.{
 
 fill_temp = |tmp, array, len, minimum, idx| {
 	if idx == len {
-		return tmp
+		tmp
+	} else {
+		j = get(array, idx) - minimum
+		replace(tmp, j, get(tmp, j) + 1)
+			|> fill_temp(array, len, minimum, idx + 1)
 	}
-
-	j = get(array, idx) - minimum
-	k = get(tmp, j) + 1
-	return replace(tmp, j, k) |> fill_temp(array, len, minimum, idx + 1)
 }
 
-aux = |temp, array, idx, range, minimum, i| {
+sweep = |temp, array, idx, range, minimum, i| {
 	if i == range {
-		return array
+		array
+	} else {
+		(arr, tmp, j) = sort(temp, array, minimum, i, idx)
+		sweep(tmp, arr, j, range, minimum, i + 1)
 	}
-	(arr, tmp, j) = sort(temp, array, minimum, i, idx)
-	return aux(tmp, arr, j, range, minimum, i + 1)
 }
 
 sort = |tmp, var $array, minimum, i, idx| {
@@ -74,7 +74,7 @@ sort = |tmp, var $array, minimum, i, idx| {
 	j = elem - 1
 	$array = replace($array, idx, i + minimum)
 
-	return replace(tmp, i, j)
+	replace(tmp, i, j)
 		|> sort($array, minimum, i, idx + 1)
 }
 

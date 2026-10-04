@@ -9,25 +9,25 @@ GnomeSort :: {}.{
 			return array
 		}
 
-		aux = |arr, idx| {
+		sweep = |arr, idx| {
 			if !(idx < len) {
 				return arr
 			}
 
 			next = idx + 1
 			if idx == 0 {
-				return aux(arr, next)
+				return sweep(arr, next)
 			}
 
 			prev = idx - 1
 			if get(arr, idx) >= get(arr, prev) {
-				return aux(arr, idx + 1)
+				return sweep(arr, idx + 1)
 			}
 
-			return swap(arr, idx, prev) |> aux(prev)
+			return swap(arr, idx, prev) |> sweep(prev)
 		}
 
-		aux(array, 0)
+		sweep(array, 0)
 	}
 
 	gnome_sort2 : List(U64) -> List(U64)

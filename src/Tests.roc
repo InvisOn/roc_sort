@@ -25,6 +25,7 @@ tests = [
 	|func| test("test_spare", [0, 7, 100], [100, 0, 7], func),
 	|func| test("test_reversed", [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], func),
 	|func| test("test_all_equal", [3, 3, 3], [3, 3, 3], func),
+	# |func| test("test_extreme_values", [0, U64.highest], [U64.highest, 0], func),
 ]
 
 test = |name, expected, data, func| {
@@ -38,7 +39,7 @@ test = |name, expected, data, func| {
 	passed
 }
 
-unsorted_long = random_list(0, 12, 12)
+unsorted_long = random_list(0, 20, 12)
 
 sorted_long = unsorted_long.sort()
 
