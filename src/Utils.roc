@@ -32,6 +32,13 @@ Utils :: {}.{
 		ok(|| array.max(), "max")
 	}
 
+	pop = |array| {
+		match array {
+			[head, .. as tail] => (head, tail)
+			[] => crash "pop unreachable"
+		}
+	}
+
 	## Deterministic pseudo-random list of `len` values in `0..=upper`, using the
 	## Park–Miller (MINSTD) generator. The same seed always yields the same list.
 	random_list : U64, U64, U64 -> List(U64)

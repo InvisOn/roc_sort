@@ -1,13 +1,14 @@
 package
 	[
 		BubbleSort,
-		GnomeSort,
-		OddEvenSort,
-		SelectionSort,
 		CockTailShakerSort,
-		InsertionSort,
-		CountingSort,
-		PigeonholeSort,
 		CombSort,
+		CountingSort,
+		GnomeSort,
+		InsertionSort,
+		OddEvenSort,
+		PigeonholeSort,
+		SelectionSort,
+		StoogeSort,
 	]
 	{}

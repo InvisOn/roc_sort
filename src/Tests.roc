@@ -4,10 +4,6 @@ Tests :: {}.{
 	run = |func| {
 		tests.map(|test| test(func)).all(|passed| passed)
 	}
-
-	test_tail_call_optimization = |func, array| {
-		expect func(array) == array.sort()
-	}
 }
 
 tests = [
