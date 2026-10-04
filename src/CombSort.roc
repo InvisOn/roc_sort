@@ -2,7 +2,6 @@ import Utils exposing [get, swap]
 import Tests
 
 CombSort :: {}.{
-	comb_sort : List(U64) -> List(U64)
 	comb_sort = |array| {
 		len = array.len()
 		if len < 2 {
@@ -12,7 +11,6 @@ CombSort :: {}.{
 		}
 	}
 
-	comb_sort2 : List(U64) -> List(U64)
 	comb_sort2 = |var $array| {
 		len = $array.len()
 		if len < 2 {

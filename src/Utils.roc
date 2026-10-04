@@ -41,7 +41,6 @@ Utils :: {}.{
 
 	## Deterministic pseudo-random array of `len` values in `0..=upper`, using the
 	## Park–Miller (MINSTD) generator. The same seed always yields the same list.
-	random_list : U64, U64, U64 -> List(U64)
 	random_list = |seed, len, upper| {
 		generate = |array, state| {
 			if array.len() == len {
