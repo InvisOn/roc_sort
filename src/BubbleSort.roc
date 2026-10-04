@@ -2,6 +2,7 @@ import Utils exposing [get, swap]
 import Tests
 
 BubbleSort :: {}.{
+	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
 		len = array.len()
 		bubble = |arr, idx, swapped| {
@@ -31,6 +32,7 @@ BubbleSort :: {}.{
 		bubble(array, 0, False)
 	}
 
+	bubble_sort2 : List(U64) -> List(U64)
 	bubble_sort2 = |var $array| {
 		len = $array.len()
 		if len < 2 {

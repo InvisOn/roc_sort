@@ -2,6 +2,7 @@ import Utils exposing [get, pop, swap]
 import Tests
 
 StoogeSort :: {}.{
+	stooge_sort : List(U64) -> List(U64)
 	stooge_sort = |array| {
 		len = array.len()
 		if len < 2 {
@@ -11,6 +12,7 @@ StoogeSort :: {}.{
 		stooge(array, 0, len - 1)
 	}
 
+	stooge_sort2 : List(U64) -> List(U64)
 	stooge_sort2 = |var $array| {
 		len = $array.len()
 		if len < 2 {

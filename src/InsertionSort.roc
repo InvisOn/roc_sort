@@ -2,10 +2,12 @@ import Utils exposing [get, replace]
 import Tests
 
 InsertionSort :: {}.{
+	insertion_sort : List(U64) -> List(U64)
 	insertion_sort = |array| {
 		sort_from(array, 1, array.len())
 	}
 
+	insertion_sort2 : List(U64) -> List(U64)
 	insertion_sort2 = |var $array| {
 		var $idx = 1
 		while $idx < $array.len() {

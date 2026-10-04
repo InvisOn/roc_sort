@@ -2,6 +2,7 @@ import Utils exposing [get, swap]
 import Tests
 
 GnomeSort :: {}.{
+	gnome_sort : List(U64) -> List(U64)
 	gnome_sort = |array| {
 		len = array.len()
 		if len < 2 {
@@ -29,6 +30,7 @@ GnomeSort :: {}.{
 		sweep(array, 0)
 	}
 
+	gnome_sort2 : List(U64) -> List(U64)
 	gnome_sort2 = |var $array| {
 		len = $array.len()
 		if len < 2 {
