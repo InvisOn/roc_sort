@@ -4,26 +4,27 @@ import Tests
 SelectionSort :: {}.{
 	selection_sort = |array| {
 		len = array.len()
+		if len < 2 {
+			return array
+		}
 
 		find_min = |arr, idx, min| {
 			if idx >= len {
-				return min
+				min
+			} else if get(arr, idx) < get(arr, min) {
+				find_min(arr, idx + 1, idx)
+			} else {
+				find_min(arr, idx + 1, min)
 			}
-
-			if get(arr, idx) < get(arr, min) {
-				return find_min(arr, idx + 1, idx)
-			}
-
-			return find_min(arr, idx + 1, min)
 		}
 
 		sweep = |arr, idx| {
 			if idx == len {
-				return arr
+				arr
+			} else {
+				min = find_min(arr, idx + 1, idx)
+				sweep(swap(arr, idx, min), idx + 1)
 			}
-
-			min = find_min(arr, idx + 1, idx)
-			sweep(swap(arr, idx, min), idx + 1)
 		}
 
 		sweep(array, 0)

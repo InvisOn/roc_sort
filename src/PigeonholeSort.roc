@@ -1,11 +1,11 @@
-import Utils exposing [replace, min, max, get]
+import Utils exposing [get, max, min, replace]
 import Tests
 
 PigeonholeSort :: {}.{
 	pigeonhole_sort : List(U64) -> List(U64)
 	pigeonhole_sort = |array| {
 		len = array.len()
-		if len == 0 {
+		if len < 2 {
 			return array
 		}
 
@@ -20,7 +20,7 @@ PigeonholeSort :: {}.{
 	pigeonhole_sort2 : List(U64) -> List(U64)
 	pigeonhole_sort2 = |var $array| {
 		len = $array.len()
-		if len == 0 {
+		if len < 2 {
 			return $array
 		}
 
@@ -58,12 +58,12 @@ fill_temp = |tmp, array, len, minimum, idx| {
 	return replace(tmp, j, k) |> fill_temp(array, len, minimum, idx + 1)
 }
 
-aux = |tmp, array, idx, range, minimum, i| {
+aux = |temp, array, idx, range, minimum, i| {
 	if i == range {
 		return array
 	}
-	return sort(tmp, array, minimum, i, idx)
-		|> (|(arr, t, j)| aux(t, arr, j, range, minimum, i + 1))
+	(arr, tmp, j) = sort(temp, array, minimum, i, idx)
+	return aux(tmp, arr, j, range, minimum, i + 1)
 }
 
 sort = |tmp, var $array, minimum, i, idx| {

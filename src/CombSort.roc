@@ -3,26 +3,26 @@ import Tests
 
 CombSort :: {}.{
 	comb_sort : List(U64) -> List(U64)
-	comb_sort = |var $array| {
-		len = $array.len()
-		if len == 0 {
-			return $array
+	comb_sort = |array| {
+		len = array.len()
+		if len < 2 {
+			array
+		} else {
+			comb_sort_pass(array, shrink_gap(len), False, len)
 		}
-
-		return comb_sort_pass($array, len, False, len)
 	}
 
 	comb_sort2 : List(U64) -> List(U64)
 	comb_sort2 = |var $array| {
 		len = $array.len()
-		if len == 0 {
+		if len < 2 {
 			return $array
 		}
 		var $gap = len
 		var $sorted = False
 
 		while !$sorted {
-			$gap = $gap.to_f64().div_floor_by(1.3).to_u64_wrap()
+			$gap = shrink_gap($gap)
 
 			if $gap <= 1 {
 				$gap = 1
@@ -46,44 +46,37 @@ CombSort :: {}.{
 	}
 }
 
-comb_sort_pass = |var $array, var $gap, var $sorted, len| {
-	if $sorted {
-		return $array
+comb_sort_pass = |array, gap, is_sorted, len| {
+	if is_sorted {
+		return array
 	}
 
-	$gap = $gap.to_f64().div_floor_by(1.3).to_u64_wrap()
-
-	if $gap <= 1 {
-		$gap = 1
-		$sorted = True
-	} else if $gap == 9 or $gap == 10 {
-		$gap = 11
-	}
-
-	($array, $gap, _, _, $sorted) = scan_gap($array, $gap, 0, len, $sorted)
-
-	return comb_sort_pass($array, $gap, $sorted, len)
-}
-
-scan_gap = |array, gap, i, len, sorted| {
-	if !(i + gap < len) {
-		return (array, gap, i, len, sorted)
-	}
-
-	(arr, srtd) = compare_and_swap(array, i, gap, sorted)
-	return scan_gap(arr, gap, i + 1, len, srtd)
-	# BUG: Lambdas that capture a variable are not tail call optimized
-	# return compare_and_swap(array, i, gap, sorted)
-	# 	|> (|(arr, srtd)| scan_gap(arr, gap, i + 1, len, srtd))
-}
-
-compare_and_swap = |array, i, gap, sorted| {
-	if get(array, i) > get(array, i + gap) {
-		(swap(array, i, i + gap), False)
+	(new_gap, new_is_sorted) = if gap <= 1 {
+		(1, True)
+	} else if gap == 9 or gap == 10 {
+		(11, is_sorted)
 	} else {
-		(array, sorted)
+		(gap, is_sorted)
+	}
+
+	(scanned, scan_sorted) = scan_gap(array, new_is_sorted, 0, len, new_gap)
+	comb_sort_pass(scanned, shrink_gap(new_gap), scan_sorted, len)
+}
+
+scan_gap = |array, is_sorted, i, len, gap| {
+	if !(i + gap < len) {
+		return (array, is_sorted)
+	}
+
+	if get(array, i) > get(array, i + gap) {
+		swap(array, i, i + gap)
+			|> scan_gap(False, i + 1, len, gap)
+	} else {
+		scan_gap(array, is_sorted, i + 1, len, gap)
 	}
 }
+
+shrink_gap = |gap| gap * 10 // 13
 
 expect Tests.run(CombSort.comb_sort)
 expect Tests.run(CombSort.comb_sort2)

@@ -1,88 +1,79 @@
-import Utils exposing [get, replace]
+import Utils exposing [get, max, replace]
 import Tests
 
 CountingSort :: {}.{
 	counting_sort : List(U64) -> List(U64)
 	counting_sort = |array| {
 		len = array.len()
-		if len == 0 {
+		if len < 2 {
 			return array
 		}
 
-		k = match array.max() {
-			Ok(i) => i
-			Err(_) => crash "unreachable"
-		}
+		k = max(array)
+		count = count1(List.repeat(0, k + 1), array)
+			|> count2(k + 1, 1)
 
-		var $count = List.repeat(0, k + 1)
-		var $output = List.repeat(0, len)
-
-		$count = count($count, array)
-		$count = count2($count, k + 1, 1)
-
-		for i in array.rev() {
-			$count = (get($count, i) - 1) |> (|j| replace($count, i, j))
-			$output = get($count, i) |> (|j| replace($output, j, i))
-		}
-
-		$output
+		count3(List.repeat(0, len), array.rev(), count)
 	}
 
 	counting_sort2 : List(U64) -> List(U64)
 	counting_sort2 = |array| {
 		len = array.len()
-		if len == 0 {
+		if len < 2 {
 			return array
 		}
 
-		max = match array.max() {
-			Ok(i) => i
-			Err(_) => crash "unreachable"
-		}
-
-		var $count = List.repeat(0, max + 1)
+		k = max(array)
+		var $count = List.repeat(0, k + 1)
 		var $output = List.repeat(0, len)
 
 		for i in array {
-			$count = get($count, i)
-				|> (|j| replace($count, i, j + 1))
+			$count = replace($count, i, get($count, i) + 1)
 		}
 
-		for i in 1..<max + 1 {
-			$count = (get($count, i) + get($count, i - 1))
-				|> (|j| replace($count, i, j))
+		for i in 1..<k + 1 {
+			sum = get($count, i) + get($count, i - 1)
+			$count = replace($count, i, sum)
 		}
 
 		for i in array.rev() {
-			$count = (get($count, i) - 1)
-				|> (|j| replace($count, i, j))
-			$output = get($count, i)
-				|> (|j| replace($output, j, i))
+			$count = replace($count, i, get($count, i) - 1)
+			$output = replace($output, get($count, i), i)
 		}
 
 		$output
 	}
 }
 
-count = |acc, array| {
+count1 = |acc, array| {
 	match array {
 		[] => acc
 		[head, .. as tail] => {
-			get(acc, head)
-				|> (|j| replace(acc, head, j + 1))
-				|> count(tail)
+			replace(acc, head, get(acc, head) + 1)
+				|> count1(tail)
 		}
 	}
 }
 
 count2 = |acc, max, idx| {
 	if idx == max {
-		return acc
+		acc
+	} else {
+		sum = get(acc, idx) + get(acc, idx - 1)
+		replace(acc, idx, sum)
+			|> count2(max, idx + 1)
 	}
+}
 
-	return (get(acc, idx) + get(acc, idx - 1))
-		|> (|j| replace(acc, idx, j))
-		|> count2(max, idx + 1)
+count3 = |output, array_rev, count| {
+	match array_rev {
+		[] => output
+		[i, .. as tail] => {
+			new_count = replace(count, i, get(count, i) - 1)
+			replace(output, get(new_count, i), i)
+				|> count3(tail, new_count)
+		}
+	}
 }
 
 expect Tests.run(CountingSort.counting_sort)

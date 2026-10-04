@@ -1,11 +1,11 @@
-import Utils exposing [swap, get]
+import Utils exposing [get, swap]
 import Tests
 
 CockTailShakerSort :: {}.{
 	cocktail_shaker_sort : List(U64) -> List(U64)
 	cocktail_shaker_sort = |array| {
 		len = array.len()
-		if len == 0 or len == 1 {
+		if len < 2 {
 			return array
 		}
 
@@ -32,7 +32,7 @@ CockTailShakerSort :: {}.{
 	cocktail_shaker_sort2 : List(U64) -> List(U64)
 	cocktail_shaker_sort2 = |var $array| {
 		len = $array.len()
-		if len == 0 or len == 1 {
+		if len < 2 {
 			return $array
 		}
 
