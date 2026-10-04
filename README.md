@@ -2,7 +2,7 @@
 
 A simple package with various sorting algorithms implemented in Roc.
 
-| Useful Sorting Algorithms                                                                     | Recursive Version  | Loop Version       | Optimized Version |
+| Useful Sorting Algorithms                                                                     | Recursive          | Loop               | Optimized         |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|:-----------------:|
 | [Bitonic sorter](https://en.wikipedia.org/wiki/Bitonic_sorter)                                |                    |                    |                   |
 | [Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort)                                      |                    |                    |                   |
@@ -18,7 +18,7 @@ A simple package with various sorting algorithms implemented in Roc.
 | [Sorting network](https://en.wikipedia.org/wiki/Sorting_network)                              |                    |                    |                   |
 | [Timsort](https://en.wikipedia.org/wiki/Timsort)                                              |                    |                    |                   |
 
-| Niche Sorting Algorithms                                                                      | Recursive Version  | Loop Version       | Optimized Version |
+| Niche Sorting Algorithms                                                                      | Recursive Version  | Loop Version       | Optimized         |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|:-----------------:|
 | [Block sort](https://en.wikipedia.org/wiki/Block_sort)                                        |                    |                    |                   |
 | [Burstsort](https://en.wikipedia.org/wiki/Burstsort)                                          |                    |                    |                   |
@@ -32,7 +32,7 @@ A simple package with various sorting algorithms implemented in Roc.
 | [Tournament sort](https://en.wikipedia.org/wiki/Tournament_sort)                              |                    |                    |                   |
 | [Tree sort](https://en.wikipedia.org/wiki/Tree_sort)                                          |                    |                    |                   |
 
-| Educational Sorting Algorithms                                                                | Recursive Version  | Loop Version       | Optimized Version |
+| Educational Sorting Algorithms                                                                | Recursive          | Loop               | Optimized         |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|:-----------------:|
 | [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)                                      | :heavy_check_mark: | :heavy_check_mark: |                   |
 | [Cocktail shaker sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)                    | :heavy_check_mark: | :heavy_check_mark: |                   |
@@ -47,7 +47,7 @@ A simple package with various sorting algorithms implemented in Roc.
 | [Selection sort](https://en.wikipedia.org/wiki/Selection_sort)                                | :heavy_check_mark: | :heavy_check_mark: |                   |
 | [Strand sort](https://en.wikipedia.org/wiki/Strand_sort)                                      |                    |                    |                   |
 
-| Joke Sorting Algorithms                                                                       | Recursive Version  | Loop Version       | Optimized Version |
+| Joke Sorting Algorithms                                                                       | Recursive          | Loop               | Optimized         |
 |:----------------------------------------------------------------------------------------------|:------------------:|:------------------:|:-----------------:|
 | [Bogosort](https://en.wikipedia.org/wiki/Bogosort)                                            |                    |                    |                   |
 | [Slowsort](https://en.wikipedia.org/wiki/Slowsort)                                            |                    |                    |                   |

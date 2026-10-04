@@ -9,7 +9,7 @@ StoogeSort :: {}.{
 			return array
 		}
 
-		sort(array, 0, len - 1)
+		stooge(array, 0, len - 1)
 	}
 
 	stooge_sort2 : List(U64) -> List(U64)
@@ -37,7 +37,7 @@ StoogeSort :: {}.{
 	}
 }
 
-sort = |array, i, j| {
+stooge = |array, i, j| {
 	arr = if get(array, i) > get(array, j) {
 		swap(array, i, j)
 	} else {
@@ -46,12 +46,13 @@ sort = |array, i, j| {
 
 	if j - i + 1 > 2 {
 		third = (j - i + 1) // 3
-		sort(arr, i, j - third)
-			|> sort(i + third, j)
-			|> sort(i, j - third)
+		stooge(arr, i, j - third)
+			|> stooge(i + third, j)
+			|> stooge(i, j - third)
 	} else {
 		arr
 	}
 }
+
 expect Tests.run(StoogeSort.stooge_sort)
 expect Tests.run(StoogeSort.stooge_sort2)

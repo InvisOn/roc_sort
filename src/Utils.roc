@@ -4,32 +4,19 @@ Utils :: {}.{
 		ok(|| array.get(idx), "get")
 	}
 
-	swap = |array, idx, idx2| {
-		expect {
-			len = array.len()
-			idx < len and idx2 < len
-		}
-		ok(|| array.swap(idx, idx2), "swap")
-	}
-
-	replace = |array, idx, elem| {
-		expect idx < array.len()
-		ok(|| array.replace(idx, elem), "replace").list
-	}
-
 	insert = |array, idx, elem| {
 		expect idx <= array.len()
 		ok(|| array.insert(idx, elem), "insert")
 	}
 
-	min = |array| {
-		expect array.len() > 0
-		ok(|| array.min(), "min")
-	}
-
 	max = |array| {
 		expect array.len() > 0
 		ok(|| array.max(), "max")
+	}
+
+	min = |array| {
+		expect array.len() > 0
+		ok(|| array.min(), "min")
 	}
 
 	pop = |array| {
@@ -39,17 +26,30 @@ Utils :: {}.{
 		}
 	}
 
-	## Deterministic pseudo-random list of `len` values in `0..=upper`, using the
+	replace = |array, idx, elem| {
+		expect idx < array.len()
+		ok(|| array.replace(idx, elem), "replace").list
+	}
+
+	swap = |array, idx, idx2| {
+		expect {
+			len = array.len()
+			idx < len and idx2 < len
+		}
+		ok(|| array.swap(idx, idx2), "swap")
+	}
+
+	## Deterministic pseudo-random array of `len` values in `0..=upper`, using the
 	## Park–Miller (MINSTD) generator. The same seed always yields the same list.
 	random_list : U64, U64, U64 -> List(U64)
 	random_list = |seed, len, upper| {
-		generate = |list, state| {
-			if list.len() == len {
-				return list
+		generate = |array, state| {
+			if array.len() == len {
+				return array
 			}
 
 			next = (state * 48271) % 2147483647
-			generate(list.append(next % (upper + 1)), next)
+			generate(array.append(next % (upper + 1)), next)
 		}
 
 		generate(List.with_capacity(len), (seed % 2147483646) + 1)
