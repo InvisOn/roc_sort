@@ -10,24 +10,19 @@ GnomeSort :: {}.{
 		}
 
 		sweep = |arr, idx| {
-			if !(idx < len) {
+			if idx >= len {
 				return arr
 			}
 
-			next = idx + 1
-			if idx == 0 {
-				return sweep(arr, next)
-			}
-
-			prev = idx - 1
-			if get(arr, idx) >= get(arr, prev) {
+			if idx == 0 or get(arr, idx) >= get(arr, idx - 1) {
 				return sweep(arr, idx + 1)
 			}
 
-			return swap(arr, idx, prev) |> sweep(prev)
+			prev = idx - 1
+			swap(arr, idx, prev) |> sweep(prev)
 		}
 
-		sweep(array, 0)
+		sweep(array, 1)
 	}
 
 	gnome_sort2 : List(U64) -> List(U64)
@@ -48,7 +43,7 @@ GnomeSort :: {}.{
 			}
 		}
 
-		return $array
+		$array
 	}
 }
 

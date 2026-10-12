@@ -9,34 +9,28 @@ OddEvenSort :: {}.{
 			return array
 		}
 
-		odd_even = |var $array, i, var $done, remainder| {
-			if i >= len - 1 {
+		# Compare-and-swap the pairs (i, i + 1), (i + 2, i + 3), ...
+		odd_even = |var $array, i, var $done| {
+			if i + 1 >= len {
 				return ($array, $done)
 			}
 
-			if i % 2 == remainder {
-				j = i + 1
-				if get($array, i) > get($array, j) {
-					$array = swap($array, i, j)
-					$done = False
-				}
+			j = i + 1
+			if get($array, i) > get($array, j) {
+				$array = swap($array, i, j)
+				$done = False
 			}
 
-			odd_even($array, i + 1, $done, remainder)
+			odd_even($array, i + 2, $done)
 		}
 
-		sort = |var $array, var $done| {
-			if $done {
-				return $array
-			}
-
-			($array, $done) = odd_even($array, 0, True, 0)
-			($array, $done) = odd_even($array, 0, True, 1)
-
-			sort($array, $done)
+		sort = |arr| {
+			(after_even, even_done) = odd_even(arr, 0, True)
+			(after_odd, odd_done) = odd_even(after_even, 1, True)
+			if even_done and odd_done after_odd else sort(after_odd)
 		}
 
-		sort(array, False)
+		sort(array)
 	}
 
 	odd_even_sort2 : List(U64) -> List(U64)
@@ -50,23 +44,15 @@ OddEvenSort :: {}.{
 		while !$done {
 			$done = True
 
-			for i in 0..<len - 1 {
-				if i % 2 == 0 {
-					j = i + 1
-					if get($array, i) > get($array, j) {
-						$array = swap($array, i, j)
+			for start in [0, 1] {
+				var $i = start
+				while $i + 1 < len {
+					j = $i + 1
+					if get($array, $i) > get($array, j) {
+						$array = swap($array, $i, j)
 						$done = False
 					}
-				}
-			}
-
-			for i in 0..<len - 1 {
-				if i % 2 == 1 {
-					j = i + 1
-					if get($array, i) > get($array, j) {
-						$array = swap($array, i, j)
-						$done = False
-					}
+					$i = $i + 2
 				}
 			}
 		}

@@ -4,11 +4,6 @@ Utils :: {}.{
 		ok(|| array.get(idx), "get")
 	}
 
-	insert = |array, idx, elem| {
-		expect idx <= array.len()
-		ok(|| array.insert(idx, elem), "insert")
-	}
-
 	max = |array| {
 		expect array.len() > 0
 		ok(|| array.max(), "max")

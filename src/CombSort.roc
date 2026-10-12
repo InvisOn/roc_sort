@@ -8,7 +8,7 @@ CombSort :: {}.{
 		if len < 2 {
 			array
 		} else {
-			comb_sort_pass(array, shrink_gap(len), False, len)
+			comb_sort_pass(array, len, len)
 		}
 	}
 
@@ -23,23 +23,15 @@ CombSort :: {}.{
 		var $sorted = False
 
 		while !$sorted {
-			$gap = shrink_gap($gap)
+			$gap = next_gap($gap)
+			# Only a pass with gap 1 and no swaps proves the list is sorted.
+			$sorted = $gap == 1
 
-			if $gap <= 1 {
-				$gap = 1
-				$sorted = True
-			} else if $gap == 9 or $gap == 10 {
-				$gap = 11
-			}
-
-			var $i = 0
-			while $i + $gap < len {
-				if get($array, $i) > get($array, $i + $gap) {
-					$array = swap($array, $i, $i + $gap)
+			for i in 0..<len - $gap {
+				if get($array, i) > get($array, i + $gap) {
+					$array = swap($array, i, i + $gap)
 					$sorted = False
 				}
-
-				$i = $i + 1
 			}
 		}
 
@@ -47,21 +39,14 @@ CombSort :: {}.{
 	}
 }
 
-comb_sort_pass = |array, gap, is_sorted, len| {
-	if is_sorted {
-		return array
-	}
-
-	(new_gap, new_is_sorted) = if gap <= 1 {
-		(1, True)
-	} else if gap == 9 or gap == 10 {
-		(11, is_sorted)
+comb_sort_pass = |array, prev_gap, len| {
+	gap = next_gap(prev_gap)
+	(scanned, sorted) = scan_gap(array, gap == 1, 0, len, gap)
+	if sorted {
+		scanned
 	} else {
-		(gap, is_sorted)
+		comb_sort_pass(scanned, gap, len)
 	}
-
-	(scanned, scan_sorted) = scan_gap(array, new_is_sorted, 0, len, new_gap)
-	comb_sort_pass(scanned, shrink_gap(new_gap), scan_sorted, len)
 }
 
 scan_gap = |array, is_sorted, i, len, gap| {
@@ -75,7 +60,18 @@ scan_gap = |array, is_sorted, i, len, gap| {
 	}
 }
 
-shrink_gap = |gap| gap * 10 // 13
+## Shrink by the usual factor of 1.3, never below 1. Gaps of 9 and 10 jump to
+## 11 ("Combsort11"), which avoids some slow worst cases.
+next_gap = |gap| {
+	shrunk = gap * 10 // 13
+	if shrunk <= 1 {
+		1
+	} else if shrunk == 9 or shrunk == 10 {
+		11
+	} else {
+		shrunk
+	}
+}
 
 expect Tests.run(CombSort.comb_sort)
 expect Tests.run(CombSort.comb_sort2)

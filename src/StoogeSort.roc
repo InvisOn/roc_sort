@@ -27,9 +27,8 @@ StoogeSort :: {}.{
 			}
 			if j - i + 1 > 2 {
 				third = (j - i + 1) // 3
-				$stack = $stack.append((i, j - third))
-					.append((i + third, j))
-					.append((i, j - third))
+				# Prepend so sub-ranges run depth-first, in the same order as the recursion.
+				$stack = [(i, j - third), (i + third, j), (i, j - third)].concat($stack)
 			}
 		}
 

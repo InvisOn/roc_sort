@@ -10,10 +10,10 @@ CountingSort :: {}.{
 		}
 
 		k = max(array)
-		count = count1(List.repeat(0, k + 1), array)
-			|> count2(k + 1, 1)
+		positions = tally(List.repeat(0, k + 1), array)
+			|> prefix_sums(1)
 
-		count3(List.repeat(0, len), array.rev(), count)
+		place(List.repeat(0, len), array.rev(), positions)
 	}
 
 	counting_sort2 : List(U64) -> List(U64)
@@ -31,7 +31,7 @@ CountingSort :: {}.{
 			$count = replace($count, i, get($count, i) + 1)
 		}
 
-		for i in 1..<k + 1 {
+		for i in 1..=k {
 			sum = get($count, i) + get($count, i - 1)
 			$count = replace($count, i, sum)
 		}
@@ -45,33 +45,36 @@ CountingSort :: {}.{
 	}
 }
 
-count1 = |acc, array| {
+## Count how many times each value occurs.
+tally = |acc, array| {
 	match array {
 		[] => acc
 		[head, .. as tail] => {
 			replace(acc, head, get(acc, head) + 1)
-				|> count1(tail)
+				|> tally(tail)
 		}
 	}
 }
 
-count2 = |acc, max, idx| {
-	if idx == max {
+## Turn counts into end positions: each slot becomes the number of values <= its index.
+prefix_sums = |acc, idx| {
+	if idx == acc.len() {
 		acc
 	} else {
 		sum = get(acc, idx) + get(acc, idx - 1)
 		replace(acc, idx, sum)
-			|> count2(max, idx + 1)
+			|> prefix_sums(idx + 1)
 	}
 }
 
-count3 = |output, array_rev, count| {
+## Walk the input backwards (keeping the sort stable), dropping each value into its slot.
+place = |output, array_rev, positions| {
 	match array_rev {
 		[] => output
 		[i, .. as tail] => {
-			new_count = replace(count, i, get(count, i) - 1)
-			replace(output, get(new_count, i), i)
-				|> count3(tail, new_count)
+			new_positions = replace(positions, i, get(positions, i) - 1)
+			replace(output, get(new_positions, i), i)
+				|> place(tail, new_positions)
 		}
 	}
 }

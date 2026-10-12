@@ -49,7 +49,6 @@ SelectionSort :: {}.{
 
 		$array
 	}
-
 }
 
 expect Tests.run(SelectionSort.selection_sort)

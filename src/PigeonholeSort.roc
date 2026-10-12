@@ -12,8 +12,8 @@ PigeonholeSort :: {}.{
 		minimum = min(array)
 		range = max(array) - minimum + 1
 
-		fill_temp(List.repeat(0, range), array, len, minimum, 0)
-			|> sweep(array, 0, range, minimum, 0)
+		holes = fill_holes(List.repeat(0, range), array, minimum)
+		empty_holes(holes, array, minimum, 0, 0)
 	}
 
 	pigeonhole_sort2 : List(U64) -> List(U64)
@@ -25,20 +25,17 @@ PigeonholeSort :: {}.{
 
 		minimum = min($array)
 		range = max($array) - minimum + 1
-		var $tmp = List.repeat(0, range)
+		var $holes = List.repeat(0, range)
 
-		for i in 0..<len {
-			j = get($array, i) - minimum
-			k = get($tmp, j) + 1
-			$tmp = replace($tmp, j, k)
+		for value in $array {
+			hole = value - minimum
+			$holes = replace($holes, hole, get($holes, hole) + 1)
 		}
 
 		var $idx = 0
-		for i in 0..<range {
-			while get($tmp, i) > 0 {
-				j = get($tmp, i) - 1
-				$tmp = replace($tmp, i, j)
-				$array = replace($array, $idx, i + minimum)
+		for hole in 0..<range {
+			for _ in 0..<get($holes, hole) {
+				$array = replace($array, $idx, hole + minimum)
 				$idx = $idx + 1
 			}
 		}
@@ -47,35 +44,36 @@ PigeonholeSort :: {}.{
 	}
 }
 
-fill_temp = |tmp, array, len, minimum, idx| {
-	if idx == len {
-		tmp
-	} else {
-		j = get(array, idx) - minimum
-		replace(tmp, j, get(tmp, j) + 1)
-			|> fill_temp(array, len, minimum, idx + 1)
+## Count how many of each value fall into its hole (value - minimum).
+fill_holes = |holes, values, minimum| {
+	match values {
+		[] => holes
+		[value, .. as rest] => {
+			hole = value - minimum
+			replace(holes, hole, get(holes, hole) + 1)
+				|> fill_holes(rest, minimum)
+		}
 	}
 }
 
-sweep = |temp, array, idx, range, minimum, i| {
-	if i == range {
-		array
-	} else {
-		(arr, tmp, j) = sort(temp, array, minimum, i, idx)
-		sweep(tmp, arr, j, range, minimum, i + 1)
+## Write each hole's values back into `array`, smallest hole first, starting at `idx`.
+empty_holes = |holes, array, minimum, hole, idx| {
+	if hole == holes.len() {
+		return array
 	}
-}
 
-sort = |tmp, var $array, minimum, i, idx| {
-	elem = get(tmp, i)
-	if !(elem > 0) {
-		return ($array, tmp, idx)
+	count = get(holes, hole)
+	if count == 0 {
+		return empty_holes(holes, array, minimum, hole + 1, idx)
 	}
-	j = elem - 1
-	$array = replace($array, idx, i + minimum)
 
-	replace(tmp, i, j)
-		|> sort($array, minimum, i, idx + 1)
+	empty_holes(
+		replace(holes, hole, count - 1),
+		replace(array, idx, hole + minimum),
+		minimum,
+		hole,
+		idx + 1,
+	)
 }
 
 expect Tests.run(PigeonholeSort.pigeonhole_sort)

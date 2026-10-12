@@ -5,19 +5,15 @@ BubbleSort :: {}.{
 	bubble_sort : List(U64) -> List(U64)
 	bubble_sort = |array| {
 		len = array.len()
-		bubble = |arr, idx, swapped| {
-			if len < 2 {
-				return arr
-			}
+		if len < 2 {
+			return array
+		}
 
+		bubble = |arr, idx, swapped| {
 			end = idx == len - 1
 
-			if end and swapped {
-				return bubble(arr, 0, False)
-			}
-
-			if end and !swapped {
-				return arr
+			if end {
+				return if swapped bubble(arr, 0, False) else arr
 			}
 
 			next = idx + 1
@@ -44,11 +40,9 @@ BubbleSort :: {}.{
 		while True {
 			$swapped = False
 			for i in 1..=last {
-				j = i - 1
-				prev = get($array, i - 1)
-				current = get($array, i)
-				if prev > current {
-					$array = swap($array, j, i)
+				prev = i - 1
+				if get($array, prev) > get($array, i) {
+					$array = swap($array, prev, i)
 					$swapped = True
 				}
 			}
