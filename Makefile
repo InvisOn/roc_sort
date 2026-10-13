@@ -1,2 +1,2 @@
 test:
-	@roc test ./src/main.roc --no-cache
+	@roc test ./src/package.roc --no-cache
