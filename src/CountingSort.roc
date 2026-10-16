@@ -2,7 +2,6 @@ import Utils exposing [get, max, replace]
 import Tests
 
 CountingSort :: {}.{
-	counting_sort : List(U64) -> List(U64)
 	counting_sort = |array| {
 		len = array.len()
 		if len < 2 {
@@ -16,7 +15,6 @@ CountingSort :: {}.{
 		place(List.repeat(0, len), array.rev(), positions)
 	}
 
-	counting_sort2 : List(U64) -> List(U64)
 	counting_sort2 = |array| {
 		len = array.len()
 		if len < 2 {

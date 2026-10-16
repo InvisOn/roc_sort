@@ -2,7 +2,6 @@ import Utils exposing [get, swap]
 import Tests
 
 CockTailShakerSort :: {}.{
-	cocktail_shaker_sort : List(U64) -> List(U64)
 	cocktail_shaker_sort = |array| {
 		len = array.len()
 		if len < 2 {
@@ -29,7 +28,6 @@ CockTailShakerSort :: {}.{
 		alternate_sweeps(array)
 	}
 
-	cocktail_shaker_sort2 : List(U64) -> List(U64)
 	cocktail_shaker_sort2 = |var $array| {
 		len = $array.len()
 		if len < 2 {
